@@ -17,7 +17,7 @@ const Profile = () => {
 
   const { userId } = useParams();
 
-  const pf="https://handnoteapi.herokuapp.com/images/";
+  const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
   const [user, setuser] = useState({})
   const[totallikes,settotallikes] =useState(0)
   const[totalviews,settotalviews] =useState(0)
@@ -45,13 +45,13 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchuser = async () => {
-      const res = await axios.get(`https://handnoteapi.herokuapp.com/api/users/${userId}`);
+      const res = await axios.get(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${userId}`);
 
       setuser(res.data);
       setisfetchuser(true);
     }
     const fetchpost = async () => {
-      const res = await axios.get(`https://handnoteapi.herokuapp.com/api/notes/profile/${userId}`);
+      const res = await axios.get(`https://notesharingbackend-ankitkr437.onrender.com/api/notes/profile/${userId}`);
       setpost(res.data);
       setisfetchpost(true);
     }
@@ -68,7 +68,7 @@ const Profile = () => {
     const fetchallconversationspeople = async () => {
       try {
         const res = await axios.get(
-          "https://handnoteapi.herokuapp.com/api/conversations/" + currentuser._id
+          "https://notesharingbackend-ankitkr437.onrender.com/api/conversations/" + currentuser._id
         );
         setconversationspeople(res.data.sort((n1, n2) => {
           return new Date(n2.createdAt) - new Date(n1.createdAt)
@@ -92,7 +92,7 @@ const Profile = () => {
       alert('You can not chat with yourself')
     }
     else if(currentconversation===undefined){
-     const res=await axios.post("https://handnoteapi.herokuapp.com/api/conversations",
+     const res=await axios.post("https://notesharingbackend-ankitkr437.onrender.com/api/conversations",
      {
        senderId:currentuser._id,
        receiverId:userId
@@ -116,11 +116,11 @@ const Profile = () => {
     audio.play();
     try {
       if (isfollow) {
-        await axios.put(`https://handnoteapi.herokuapp.com/api/users/${userId}/unfollow`, { userId: currentuser._id });
+        await axios.put(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${userId}/unfollow`, { userId: currentuser._id });
         dispatch({ type: "UNFOLLOW", payload: user._id });
       }
       else {
-        await axios.put(`https://handnoteapi.herokuapp.com/api/users/${userId}/follow`, { userId: currentuser._id });
+        await axios.put(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${userId}/follow`, { userId: currentuser._id });
         dispatch({ type: "FOLLOW", payload: user._id });  
       }
     }

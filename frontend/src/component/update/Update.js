@@ -8,7 +8,7 @@ import { CloseRounded } from "@material-ui/icons";
 import { Spinner, Form, Button } from 'react-bootstrap';
 const Update = () => {
 
-  const pf="https://handnoteapi.herokuapp.com/images/";
+  const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
   const { user } = useContext(AuthContext);
 
   const [firstname, setfirstname] = useState();
@@ -66,7 +66,7 @@ const Update = () => {
       console.log(newUser.profilePicture)
     }
     try{
-        await axios.put(`https://handnoteapi.herokuapp.com/api/users/${user._id}`,newUser);
+        await axios.put(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${user._id}`,newUser);
         audio.play();
         alert("successfully uploaded...")
         navigate('/');

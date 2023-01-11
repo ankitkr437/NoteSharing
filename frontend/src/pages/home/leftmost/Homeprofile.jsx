@@ -15,7 +15,7 @@ const Homeprofile = () => {
       
     const [placeholder, setplaceholder] = useState("..");
     
-    const pf="https://handnoteapi.herokuapp.com/images/";
+    const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
   
     const { user ,isFetching} = useContext(AuthContext);
        

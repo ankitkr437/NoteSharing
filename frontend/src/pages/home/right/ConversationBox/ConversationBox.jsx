@@ -2,7 +2,7 @@ import React from 'react'
 import './ConversationBox.css'
 import {format} from 'timeago.js'
 const ConversationBox = ({onechat,my}) => {
-    const pf="https://handnoteapi.herokuapp.com/images/";
+    const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
      
   return (
     <>

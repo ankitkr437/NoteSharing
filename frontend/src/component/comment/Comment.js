@@ -26,7 +26,7 @@ audio.src = "/music/comment.wav";
   useEffect(()=>{
     const fetchComment =async(req,res)=>{
      try{
-        const res = await axios.get("https://handnoteapi.herokuapp.com/api/comments/" + notesid)
+        const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/comments/" + notesid)
         setallcomment(res.data)
         setisfetchcomment(true);
      }
@@ -45,7 +45,7 @@ audio.src = "/music/comment.wav";
         e.preventDefault();
         audio.play();
         try {
-           const res= await axios.post("https://handnoteapi.herokuapp.com/api/comments/" + notesid, { 
+           const res= await axios.post("https://notesharingbackend-ankitkr437.onrender.com/api/comments/" + notesid, { 
                 userId:user._id,
                 text:commenttext,
              });

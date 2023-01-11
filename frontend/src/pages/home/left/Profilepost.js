@@ -10,7 +10,7 @@ const Posttime = ({ x,currentprofileuser}) => {
 
      
     const { user } = useContext(AuthContext);
-    const pf = "https://handnoteapi.herokuapp.com/images/";
+    const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
     const [like, setlike] = useState(x.likes.length);
     const [islike, setislike] = useState(false);
     const [isbuy, setisbuy] = useState(true);
@@ -43,7 +43,7 @@ const Posttime = ({ x,currentprofileuser}) => {
         // }
         const fetchComment = async (req, res) => {
             try {
-                const res = await axios.get("https://handnoteapi.herokuapp.com/api/comments/" + x._id)
+                const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/comments/" + x._id)
                 setallcomment(res.data)
                 setisfetchcomment(true);
             }
@@ -58,14 +58,14 @@ const Posttime = ({ x,currentprofileuser}) => {
     const likehandler = () => {
         audio.play();
         try {
-            axios.put("https://handnoteapi.herokuapp.com/api/notes/" + x._id + "/like", { userId: user._id });
+            axios.put("https://notesharingbackend-ankitkr437.onrender.com/api/notes/" + x._id + "/like", { userId: user._id });
         } catch (err) { }
         setlike(islike ? like - 1 : like + 1);
         setislike(!islike);
     };
     const seenhandler = () => {
         try {
-          axios.put("https://handnoteapi.herokuapp.com/api/notes/" +x._id + "/buy", { userId: user._id });
+          axios.put("https://notesharingbackend-ankitkr437.onrender.com/api/notes/" +x._id + "/buy", { userId: user._id });
         } catch (err) {}
         setseen(isseen? seen - 1 : seen + 1);
         setisseen(!isseen);
@@ -77,7 +77,7 @@ const Posttime = ({ x,currentprofileuser}) => {
         audio1.play();
         
             try {
-                response==="YES" && await axios.delete(`https://handnoteapi.herokuapp.com/api/notes/${x._id}`,{userId:user._id});
+                response==="YES" && await axios.delete(`https://notesharingbackend-ankitkr437.onrender.com/api/notes/${x._id}`,{userId:user._id});
                 response==="YES" && alert("notes deleted successfully")
              response==="YES" && navigate('/');
             } catch (err) {

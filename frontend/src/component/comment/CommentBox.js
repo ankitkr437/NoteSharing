@@ -6,12 +6,12 @@ import axios from 'axios';
   
  const CommentBox = ({userinfo,text}) => {
 
-  const pf="https://handnoteapi.herokuapp.com/images/";
+  const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
   const [user,setuser]=useState({})
   const [isfetchuser,setisfetchuser]=useState(false)
   useEffect(()=>{
     const fetchuser = async ()=>{
-     const res= await axios.get(`https://handnoteapi.herokuapp.com/api/users/${userinfo}`);
+     const res= await axios.get(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${userinfo}`);
    
      setuser(res.data);
      setisfetchuser(true);

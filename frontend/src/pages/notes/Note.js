@@ -6,7 +6,7 @@ import {Spinner} from 'react-bootstrap';
  
 const Note = () => {
   
-  const pfpdf="https://handnoteapi.herokuapp.com/images/";
+  const pfpdf="https://notesharingbackend-ankitkr437.onrender.com/images/";
    
     
     const {notesid} =useParams();
@@ -15,7 +15,7 @@ const Note = () => {
     useEffect(()=>{
         const fetchnoteone = async ()=>{
           try{
-            const res = await axios.get(`https://handnoteapi.herokuapp.com/api/notes/${notesid}`)
+            const res = await axios.get(`https://notesharingbackend-ankitkr437.onrender.com/api/notes/${notesid}`)
             setnoteone(res.data);
             setisfetchnoteone(true)
           }

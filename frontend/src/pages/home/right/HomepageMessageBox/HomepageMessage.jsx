@@ -10,7 +10,7 @@ function HomepageMessage() {
 
 
   const { user } = useContext(AuthContext);
-  const pf = "https://handnoteapi.herokuapp.com/images/";
+  const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
   const [conversationspeople, setconversationspeople] = useState([]);
   
   const [allauthor,setallauthor]=useState([])
@@ -19,7 +19,7 @@ function HomepageMessage() {
   useEffect(() => {
     const fetchallconversationspeople = async () => {
       try {
-        const res = await axios.get("https://handnoteapi.herokuapp.com/api/conversations/" + user._id);
+        const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/conversations/" + user._id);
         setconversationspeople(res.data);
         
       } catch (err) {
@@ -27,7 +27,7 @@ function HomepageMessage() {
       }
     }
       const fetchalluser = async () => {
-        const res = await axios.get("https://handnoteapi.herokuapp.com/api/users/");
+        const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/users/");
         setallauthor(res.data);
       };
     fetchalluser();

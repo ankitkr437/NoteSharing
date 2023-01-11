@@ -7,7 +7,7 @@ import axios from 'axios';
 import {Spinner} from 'react-bootstrap';
 const HomeMessageBox = ({conversationspeople,receiverauthor,currentuser}) => {
 
-  const pf = "https://handnoteapi.herokuapp.com/images/";
+  const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
 
       const [currentconversation,setcurrentconversation]=useState(null)
       const [isfetchcurrentconversation,setisfetchcurrentconversation]=useState(false)
@@ -24,7 +24,7 @@ const HomeMessageBox = ({conversationspeople,receiverauthor,currentuser}) => {
       alert('You can not chat with yourself')
     }
     else if(currentconversation===undefined){
-     const res=await axios.post("https://handnoteapi.herokuapp.com/api/conversations",
+     const res=await axios.post("https://notesharingbackend-ankitkr437.onrender.com/api/conversations",
      {
        senderId:currentuser._id,
        receiverId:receiverauthor._id

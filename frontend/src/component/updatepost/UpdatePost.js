@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 function UpdatePost() {
   const {notesid}=useParams();
-    const pf="https://handnoteapi.herokuapp.com/images/";
+    const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
   const { user } = useContext(AuthContext);
   const [notename, setnotename] = useState();
   const [desc, setdesc] = useState();
@@ -64,7 +64,7 @@ function UpdatePost() {
       //   } catch (err) {}
       // }
       try {
-        await axios.put(`https://handnoteapi.herokuapp.com/api/notes/${notesid}`,newNote);
+        await axios.put(`https://notesharingbackend-ankitkr437.onrender.com/api/notes/${notesid}`,newNote);
         audio.play();
         alert("successfully uploaded...")
         navigate('/');

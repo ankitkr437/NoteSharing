@@ -5,7 +5,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 const Sell = () => {
     const {user}=useContext(AuthContext);
-    const pf="https://handnoteapi.herokuapp.com/images/";
+    const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
   return <>
       <div className="sell-container">
          <div className="sell-img">

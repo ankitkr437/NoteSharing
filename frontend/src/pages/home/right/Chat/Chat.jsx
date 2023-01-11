@@ -21,7 +21,7 @@ const Chat = () => {
   const [onlineusers, setonlineusers] = useState([]);
   const [iscurrentchat, setiscurrentchat] = useState(false);
   const { user } = useContext(AuthContext);
-  const pf = "https://handnoteapi.herokuapp.com/images/";
+  const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
   const [conversationspeople, setconversationspeople] = useState([]);
   const [isfetchconversationspeople, setisfetchconversationspeople] =
  useState(false);
@@ -38,7 +38,7 @@ const Chat = () => {
   useEffect(() => {
     // https://handnotesocket.herokuapp.com/
      
-    socket.current = io("ws://handnotesocket.herokuapp.com");
+    socket.current = io("ws://notesharingbackend-ankitkr437.onrender.com");
     // socket.current = io("ws://localhost:8900");
     socket.current.on("getMessage", (data) => {
       setarrivalmessage({
@@ -72,7 +72,7 @@ const Chat = () => {
     const fetchallconversationspeople = async () => {
       try {
         const res = await axios.get(
-          "https://handnoteapi.herokuapp.com/api/conversations/" + user._id
+          "https://notesharingbackend-ankitkr437.onrender.com/api/conversations/" + user._id
         );
         setconversationspeople(res.data.sort((n1, n2) => {
           return new Date(n2.createdAt) - new Date(n1.createdAt)
@@ -91,7 +91,7 @@ const Chat = () => {
     const fetchallMessages = async () => {
       try {
         const res = await axios.get(
-          "https://handnoteapi.herokuapp.com/api/messages/" + currentchatId
+          "https://notesharingbackend-ankitkr437.onrender.com/api/messages/" + currentchatId
         );
         setmessages(res.data);
       } catch (err) {
@@ -120,7 +120,7 @@ const Chat = () => {
       receiverId,
       text: newchat,
     });
-    const res = await axios.post("https://handnoteapi.herokuapp.com/api/messages", chat);
+    const res = await axios.post("https://notesharingbackend-ankitkr437.onrender.com/api/messages", chat);
     console.log(res.data);
     setmessages([...messages, res.data]);
     setnewchat("");

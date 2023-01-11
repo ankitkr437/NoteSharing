@@ -12,7 +12,7 @@ const Sell = () => {
 
  
   const { user } = useContext(AuthContext);
-  const pf="https://handnoteapi.herokuapp.com/images/";
+  const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
 
   const ShowForm = useRef();
   const notename = useRef();
@@ -66,7 +66,7 @@ const Sell = () => {
     //   } catch (err) {}
     // }
     try {
-      await axios.post("https://handnoteapi.herokuapp.com/api/notes", newNote);
+      await axios.post("https://notesharingbackend-ankitkr437.onrender.com/api/notes", newNote);
       window.location.reload();
       alert("successfully uploaded notes")
     } catch (err) {}

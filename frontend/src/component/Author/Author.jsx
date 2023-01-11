@@ -9,7 +9,7 @@ import axios from "axios";
 import Profile from "../../pages/profile/Profile";
 
 const Author = () => {
-  const pf = "https://handnoteapi.herokuapp.com/images/";
+  const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
   const [users, setusers] = useState([]);
   const [notes, setnotes] = useState([]);
   const [len, setlen] = useState(0);
@@ -18,12 +18,12 @@ const Author = () => {
   const TotalPublishNotes = createContext();
   useEffect(() => {
     const fetchalluser = async () => {
-      const res = await axios.get("https://handnoteapi.herokuapp.com/api/users/");
+      const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/users/");
       setusers(res.data);
       setisuser(true);
     };
     const fetchallnotes = async () => {
-      const res = await axios.get("https://handnoteapi.herokuapp.com/api/notes/");
+      const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/notes/");
       setnotes(res.data);
       setisnotes(true);
     };

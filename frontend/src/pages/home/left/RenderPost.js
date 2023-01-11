@@ -1,6 +1,5 @@
- 
 import React, { useContext } from "react";
-import HomePost from "./HomePost.js";
+import HomePost from "./Homepost.js";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useState,useEffect} from "react";
@@ -14,7 +13,7 @@ import { AuthContext } from "../../../context/AuthContext";
 const RenderPost = () => {
 
 
-  const pf = "https://handnoteapi.herokuapp.com/images/";
+  const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
 
   const [users, setusers] = useState([]);
   const [isfetchusers, setisfetchusers] = useState(false)
@@ -36,13 +35,13 @@ const RenderPost = () => {
  
   useEffect(() => {
     const fetchallusers = async () => {
-      const res = await axios.get("https://handnoteapi.herokuapp.com/api/users/");
+      const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/users/");
       setusers(res.data);
       setisfetchusers(true)
     }
 
     const fetchallnotes = async () => {
-      const res = await axios.get("https://handnoteapi.herokuapp.com/api/notes/");
+      const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/notes/");
       setnotes(res.data.sort((n1, n2) => {
         return new Date(n2.createdAt) - new Date(n1.createdAt)
       }));

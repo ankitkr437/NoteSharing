@@ -4,14 +4,14 @@ import { useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import './MessageBox.css'
 function MessageBox({conversationone,currentuser,onlineusers}) {
-    const pf="https://handnoteapi.herokuapp.com/images/";
+    const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
     const [conversationdetails,setconversationdetails]=useState();
     const [isonline,setisonline]=useState(false);
     const [isconversationdetails,issetconversationdetails]=useState(false);
      useEffect( async()=>{
       const authorId=  conversationone.members.find((x)=> x!==currentuser._id);
       try{
-         const res = await axios.get("https://handnoteapi.herokuapp.com/api/users/"+authorId);
+         const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/users/"+authorId);
          setconversationdetails(res.data);
          issetconversationdetails(true)
       }catch(err)
