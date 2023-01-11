@@ -1,0 +1,35 @@
+.conversationbox-1{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+}
+.conversationbox-1-top{
+    display: flex;   
+}
+.conversationbox-1-img{
+    height: 5vh;
+    width: 5vh;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 1vh;
+}
+.conversationbox-1-text{
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: rgb(87, 139, 206);
+    padding: 1vw 1vw;
+    max-width: 60vh;
+    color: white;
+}
+.conversationbox-1.my{
+   align-items: flex-end;
+}
+.conversationbox-1-text.text{
+    background-color: rgb(246, 241, 241);
+    color: black;
+}
+.conversationbox-1-timeago{
+    font-size: 12px;
+    font-weight: 300;
+    color: darkgray;
+}

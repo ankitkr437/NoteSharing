@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Update-container{
+    display: flex;
+   padding-top: 15vh;
+   align-items: center;
+   justify-content: center;
+   
+}
+.Update-profile-container{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 134vh;
+   width: 90vw;
+   background-color: rgb(174, 233, 233);
+   padding: 5vh 2vw;
+   border-radius: 10px;
+ }
+  
+ .Update-profile-container-left{
+   background-color: rgb(75 162 240);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 100%;
+   width: 25%;
+   padding: 2vh 0;
+   box-shadow: 0 6px 13px rgb(40, 114, 199);
+  border-radius: 10px;
+ }
+ .Update-profile-container-left-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+ }
+ .Update-profile-container-left-top-user-desc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ .Update-profile-container-left-top-img{
+  width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+ 
+
+ .Update-profile-container-left-top-name{
+  margin-bottom: 0;
+  padding-bottom: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+ }
+ .Update-profile-container-left-top-username{
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+ }
+ .Update-profile-container-right{
+    height: 100%;
+    width: 75%;
+   border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 2vh;
+    box-shadow: 0 6px 13px rgb(155, 169, 184);
+ }
+ .Update-profile-container-right-heading{
+     font-size: 30px;
+     color: cadetblue;
+     font-weight: 600;
+     text-align: center;
+ }
+ .Update-profile-container-right-form{
+     display: flex;
+     flex-direction: column;
+     width:100%;
+     height: 100vh;
+ }
+ .input-box{
+      height: 11vh;
+      width: 95%;
+      margin-bottom: 2vh;
+ }
+ .input-block{
+    height: 6vh;
+    width: 95%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 3px 1vw;
+ }
+ .input-heading{
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0;
+ }
+ 
+.Update-profile-container-right-form-submit{
+    height: 6vh;
+    width: 95%;
+    background-color: rgb(86, 78, 158);
+    color: white;
+    border: 1px solid grey;
+    border-radius: 10px;
+   font-size: 23px;
+}
+.Update-profile-container-right-form-submit:active{
+   font-size: 26px;
+}
+.Update-profile-container-right-form-submit{
+   background-color: #8190b5;
+   box-shadow: 0 6px 13px grey;
+   font-size: 22px;
+}
+@media only screen and (max-width: 768px) {
+    .Update-profile-container{
+        width: 97vw; 
+        height: 125vh;
+      
+      }
+      .Update-profile-container-right-form{
+        width:100%;
+    }
+    .Update-profile-container-right{
+        padding: 2vh 1vh; 
+     }
+     .Update-profile-container-right-heading{
+        font-size: 18px;
+    }
+    .Update-profile-container-left-top-img{
+        width: 28px;
+          height: 28px;
+        }
+       .Update-profile-container-left-top-name{
+        font-size: 18px;
+       }
+       .Update-profile-container-left-top-username{
+          font-size: 13px;
+       }
+       .input-block{
+        font-size: 16px;
+        height: 5vh;
+      }
+      .Update-profile-container-right-form-submit{
+         background-color: #5985f3;
+         box-shadow: 0 6px 13px grey;
+         font-size: 16px;
+      }
+      #input-bloack-file{
+         font-size: 12px;
+         width: 100%;
+      }
+}

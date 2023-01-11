@@ -1,0 +1,24 @@
+.notifications-container{
+    width:100%;
+    height:100vh;
+    padding-top: 8vh;
+    padding-left: 6vh;
+    padding-right: 6vh;
+}
+.notifications-box{
+    height: 8vh;
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.notifications-box img{
+   width: 45px;
+   height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.notifications-box p{
+    font-size: 17px;
+}

@@ -1,0 +1,245 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0%;
+}
+.post-container{
+    display: flex;
+    height: 82vh;
+    width: 60%;
+    flex-direction: column;
+    margin-bottom: 8vh;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 7px rgb(233, 238, 233);
+}
+.post-topbar{
+    height: 13vh;
+    padding: 1vh 1vh;
+    display: flex;
+    border-top-right-radius: 15px;
+   background-color: rgb(116, 154, 242);
+}
+.post-topbar-img{
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    height: 60px;
+}
+.post-topbar-desc{
+    display: flex;
+    flex-direction: column;
+}
+.post-topbar-name{
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(8, 43, 43);
+}
+.post-topbar-desc{
+    margin-left: 1vh;
+}
+.post-topbar-follow-ago-container{
+    display: flex;
+}
+.post-topbar-follow-ago-container p{
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2px;
+    color: rgb(64, 77, 77);
+}
+.post-topbar-edit-delete-container{
+    display: flex;
+    justify-content: end;
+    width: 27vw;
+    margin-top: 2vh;
+}
+.post-topbar-delete-icon{
+    height: 38px;
+    width: 38px;
+    display: flex;
+    margin-left: 3vw;
+}
+.post-topbar-edit-icon img{
+    height: 38px;
+    width: 38px;
+}
+.post-topbar-delete-icon:hover{
+    cursor: pointer;
+}
+
+
+
+.main-post{
+    display: flex;
+    /* background-color: rgb(248, 252, 252);   */
+}
+.main-post-img-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+.main-post-img-container img{
+    width: 250px;
+    height:57vh;
+}
+.main-post-about{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 1vw;
+}
+.main-post-notename{
+    font-size:23px;
+    font-weight: 700;
+}
+.main-post-description{
+    font-size: 19px;
+    font-weight: 600;
+    color: rgb(71, 66, 66);
+    margin-bottom: -2px;
+}
+.main-post-desc{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(95, 88, 88);
+}
+.View-pdf-1{
+    position: absolute;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   border-radius: 15px;
+   background-color: rgb(115, 155, 247);
+   width: 110px;
+   height: 8vh;
+   padding-top: 1.5vh;
+   box-shadow: 0px 0px 10px 12px rgb(204, 208, 204);
+}
+.View-pdf-1:hover{
+  background-color: rgb(72, 124, 245);
+  cursor: pointer;
+}
+.View-pdf-1 p{
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+.View-pdf-1 img{
+   height: 20px;
+   border-radius: 0;
+   width: 20px;  
+   margin-bottom: 1vh;
+   margin-left: 1vh;
+}
+.post-reaction-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2vh;
+} 
+.post-reaction{
+    display: flex;
+    background-color: rgb(244, 232, 232);
+    border-radius: 35px;
+    width: 13vw;
+    justify-content: center;
+}
+.post-reaction img{
+   height: 35px;
+   width: 35px;
+   margin-top: 1vh;
+}
+.post-reaction p{
+    margin-left: 2px;
+     font-size: 23px;
+     margin-top: 1vh;
+ }
+ .post-container{
+    width: 100%;
+}
+
+@media only screen and (max-width: 700px) {
+    .post-container{
+        height: 56vh;
+        padding-bottom:2vh;
+        margin-bottom: 3vh;
+        width: 97%;
+    }
+    .post-topbar-img{
+        width: 42px;
+        height: 42px;
+    }
+    .post-topbar-name{
+        font-size: 15px;
+        font-weight: 700;
+        color: rgb(8, 43, 43);
+    }
+    .post-topbar-desc{
+        margin-left: 1vh;
+    }
+    .post-topbar{
+        height: 9vh;
+    }
+    .post-topbar-follow-ago-container p{
+        font-size: 10px;
+        line-height: 0px;
+    }
+ 
+     .post-topbar-delete-icon{
+        height: 24px;
+        width: 24px;
+    }
+    .post-topbar-edit-icon img{
+        height: 24px;
+        width: 24px;
+    }
+    .post-reaction img {
+        height: 21px;
+        width: 21px;
+        /* margin-top: 1.5vh; */
+    }
+    .post-reaction p{
+        font-size: 15px;
+    }
+    .post-reaction{
+        width: 37vw;
+        height: 5vh;
+    }
+    .post-reaction-seen-img{
+        height: 28px;
+        width: 28px;
+    }
+    .post-topbar-edit-delete-container {
+        width: 37vw;
+        margin-top: 1vh;
+    }
+    .main-post-img-container img{
+        height:39vh;
+        width: 23vh;
+    }
+    .main-post{
+        height: 40vh;
+    }
+    .main-post-notename{
+        font-size:20px;
+    }
+    .main-post-description{
+        font-size: 15px;
+    }
+    .main-post-desc{
+        font-size: 11px;
+    }
+    .View-pdf-1{
+        width: 105px;
+   height: 7vh;
+    }
+    .View-pdf-1 img{
+        height: 18px;
+        width: 18px;  
+     }
+     .View-pdf-1 p{
+        font-size: 14px;
+      }
+  }
+

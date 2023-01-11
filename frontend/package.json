@@ -1,0 +1,58 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.61",
+    "@mui/icons-material": "^5.2.5",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.25.0",
+    "bootstrap": "^3.4.1",
+    "bootstrap-icons": "^1.7.2",
+    "cloudinary-react": "^1.7.1",
+    "dotenv": "^16.0.0",
+    "react": "^18.0.0-rc.0-next-fe905f152-20220107",
+    "react-alice-carousel": "^2.5.1",
+    "react-bootstrap": "^2.1.1",
+    "react-bootstrap-icons": "^1.7.2",
+    "react-cookie": "^4.1.1",
+    "react-dom": "^18.0.0-rc.0-next-fe905f152-20220107",
+    "react-pdfobject": "^1.2.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "socket.io-client": "^4.5.1",
+    "timeago.js": "^4.0.2",
+    "universal-cookie": "^4.0.4",
+    "web-vitals": "^3.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

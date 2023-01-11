@@ -1,0 +1,115 @@
+.author-container{
+    display: flex;
+    overflow-x: auto;
+    padding: 2vh 1vh;
+}
+.author-container::-webkit-scrollbar {
+    display: none;
+}
+
+.author-container {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+ 
+.author-card{
+    min-width: 170px;
+    min-height: 200px;
+    box-shadow: 0px 0px 10px 7px rgb(233, 238, 233);
+    border-radius: 8px;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1vh;
+}
+.author-image{
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid cornflowerblue;
+}
+.author-name{
+    font-size: 16px;
+    font-weight: 600;
+}
+/* .author-desc{
+    font-size: 14px;
+    max-width: 160px;
+    font-weight: 400;
+    text-align: center;
+    max-height: 10px;
+    color: rgb(83, 96, 96);
+} */
+.author-notes-followers-container{
+    display: flex;
+}
+.author-notes-followers{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width:75px;
+}
+.author-notes-followers-count{
+    font-size: 18px;
+    color: cornflowerblue;
+}
+.author-notes-followers-text{
+    font-size: 13px;
+    font-weight: 300;
+}
+.seperation-image{
+   width: 20px;
+
+}
+ 
+
+
+@media only screen and (max-width: 600px) {
+
+  .author-container{
+    width: 95vw;
+    margin-top: -14vh;
+    padding:  3vh 0vh;
+   }
+   .author-card{
+    min-width: 135px;
+    min-height: 135px;
+     }
+.author-image{
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid cornflowerblue;
+}
+.author-name{
+    font-size: 14px;
+    font-weight: 600;
+}
+ 
+.author-notes-followers-container{
+    display: flex;
+}
+.author-notes-followers{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width:64px;
+}
+.author-notes-followers-count{
+    font-size: 16px;
+    color: cornflowerblue;
+}
+.author-notes-followers-text{
+    font-size: 11px;
+    font-weight: 300;
+}
+.seperation-image{
+   width: 0px;
+
+}
+ 
+}

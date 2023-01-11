@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.contact-upper p{
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(4, 4, 130);
+}
+.contact-text{
+    display: flex;
+}
+@media only screen and (max-width: 768px) {
+    .contact-upper p{
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .contact-img{
+        height:4vh;
+        width: 4vh;
+    }
+    .footer-complete-container {
+        height: 35%;
+        width: 83%;
+      }
+}

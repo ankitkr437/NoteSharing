@@ -1,0 +1,80 @@
+.sell-container-home{
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    justify-content: center;
+    padding-top: 12vh;
+    padding-bottom: 12vh;
+}
+.sell-img-home{
+    flex:0;
+    margin-right: 1vh;
+}
+.sell-img-home img{
+   width: 10vh;
+   height: 10vh;
+   border-radius: 50%;
+   object-fit: cover;
+   border: 1px solid grey;
+   border-radius: 31px;
+}
+.sell-post-home{
+    flex: 10;
+    border: 1px solid grey;
+    border-radius: 31px;
+    padding: 1.6vh 3vw;
+    height: 4vw;
+    width: 100%; 
+}
+.sell-post-home:hover{
+   cursor: pointer;
+   background-color:rgb(248, 248, 239) ;
+}
+.sell-post-home-text:hover{
+    cursor: pointer;
+ }
+.sell-post-home p{
+    color: rgb(29, 51, 51);
+    font-size: 20px;
+    font-weight: 500;
+}
+.sellform-submit-button {
+    background-color: #95a8d8;
+    box-shadow: 0 6px 13px rgb(70, 62, 62);
+    font-size: 22px;
+}
+
+@media only screen and (max-width: 768px) {
+    .sell-img-home img{
+       width: 5vh;
+       height: 5vh;
+     }
+     .sell-container-home {
+        width: 91%;
+     }
+     .sell-container-home{
+        height: 6vh;
+        margin-bottom: 0vh;
+        padding-bottom: 8vh;
+        width: 97%;
+    }
+    .sell-post-home{
+        display: flex;
+        justify-content: center;
+        padding: 0.8vh 0vw;
+        flex: 4;
+        height: 5vh;
+        margin-right: 0vw;
+    }
+    .sell-post-home p{
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .sellform-submit-button {
+        font-size: 17px;
+        width: 70%;
+        height: 6vh;
+    }
+    
+}
+ 

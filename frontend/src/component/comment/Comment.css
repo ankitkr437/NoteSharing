@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.comment-container{
+    padding-top: 12vh;
+    display: flex;
+    height: 100vh;
+    padding: 2vh 0vw;
+}
+.comment-info-container{
+    overflow-y: scroll;
+    padding: 9vh 4vw;
+}
+.comment-info-container::-webkit-scrollbar {
+    width: 7px;               /* width of the entire scrollbar */
+  }
+  
+  .comment-info-container::-webkit-scrollbar-track {
+    background: white;       /* color of the tracking area */
+  }
+  
+  .comment-info-container::-webkit-scrollbar-thumb {
+    background-color: rgb(78, 78, 220);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgb(0, 8, 255);  /* creates padding around scroll thumb */
+  }
+.comment-form{
+    display: flex;
+    /* since there is a 2 vw padding ffrom left right */
+     width: 95vw;
+     height: 8vh;
+     position: fixed;
+     bottom: 0;
+     flex-direction: row;
+     margin: 0 0;
+     padding: 0 0 ;
+       align-items: center;
+       justify-content: center;
+}
+.comment-input{
+    width: 80vw;
+    height: 91%;
+    border-radius: 10px;
+    padding: 0 2vh;
+}
+ 
+.comment-submit-icon-form{
+  border: 2px solid;
+    border-left: none;
+    height: 7vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7vw;
+}
+#submit-comment-form{
+    display: none;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .comment-submit-icon-form{
+          width: 9vw;
+      }
+      .comment-info-container{
+        padding: 9vh 0vw;
+    }
+    
+}

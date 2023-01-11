@@ -1,0 +1,42 @@
+.messagebox-1{
+    border: 1px solid lightgray;
+     border-radius: 20px;
+     padding: 0;
+     margin: 0;
+}
+.messagebox-1-topbar{
+    border-top-right-radius: 20px;
+    padding: 4vh 2vw;
+    background-color: rgb(116, 154, 242);
+}
+.messagebox-1-topbar-title{
+    color: white;
+    font-size: 23px;
+    font-weight: 700;
+}
+.messagebox-1-topbar-form{
+    height: 7vh;
+    width: 100%;
+}
+.messagebox-1-topbar-form-input{
+    border: 1px solid gray;
+    border-radius: 30px;
+    padding: 1vw 2vw;
+    width: 17vw;
+    height:7vh;
+    background-color: lightcyan;
+}
+ 
+.messagebox-1-allmessage{
+    padding: 2vw 2vw;
+}
+.messagebox-1-allmessage{
+    height: 55vh;
+    overflow-y: scroll;
+}
+
+@media only screen and (max-width: 768px) {
+    .messagebox-1-allmessage{
+        height: 70vh;
+    }
+}

@@ -1,0 +1,103 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.banner-container{
+    width: 100%;
+     display: flex;
+     justify-content: center;
+     height: 27vh;
+     padding: 1vh 2vh;
+}
+.banner-first{
+    display: flex;
+    flex: 3;
+    height: 100%;
+    text-align: center;
+    justify-content:space-around;
+    align-items: center;
+    padding: 0 20vh;
+}
+.banner-image-container{
+    flex: 2;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.banner-image{
+    width: 23vh;
+    height: 23vh;
+    border-radius: 50%;
+    object-fit: cover;   
+    
+}
+.carousel .slide img {
+    border: 2px solid rgb(67, 94, 143);      
+}
+ 
+.banner-text{
+    flex: 3;
+}
+.carousel .slide img {
+    width: 23vh;
+    height: 23vh;
+}
+.banner-name{
+    font-weight: 600;
+    font-size: 28px;
+    cursor: pointer;
+    color: rgb(22, 9, 78);
+}
+.banner-name:hover{
+    color: rgb(106, 138, 228);
+}
+.banner-sell{
+    font-weight: 300;
+    font-size: 23px;
+    color: rgb(23, 14, 100);
+}
+.carousel-container {
+    background-image: linear-gradient(to right, rgb(218 221 230), rgb(214 97 97));
+   margin-left: 3vw;
+   margin-right: 2vw;
+   box-shadow: 0px 1px 3px rgb(32, 27, 41);
+}
+
+.carousel.carousel-slider .control-arrow {
+    background-color: rgb(10, 32, 49);
+    height: 9vh;
+    margin-top: 9vh;
+}
+
+ 
+.banner-notesname:hover{
+    color: rgb(36, 44, 8);
+}
+ 
+@media only screen and (max-width: 750px) {
+    
+  
+    .carousel.carousel-slider .control-arrow {
+        padding: 5;
+    }
+    .banner-sell{
+        font-size: 14px;
+    }
+    .banner-name{  
+        font-size: 21px;
+    }
+    .banner-image-container{
+        flex: 3;
+    }
+    
+    .carousel .slide img {
+        width: 16vh;
+        height: 16vh;
+    }
+     
+    .banner-first{
+        padding: 0 4vh;
+    }
+}

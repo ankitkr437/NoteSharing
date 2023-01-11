@@ -1,0 +1,51 @@
+.MessageBox-1{
+    display: flex;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 10px 7px rgb(203, 218, 201);
+    padding: 1vh 2vh;
+    margin-bottom: 4vh;
+}
+.MessageBox-1:hover{
+    cursor: pointer;
+    background-color: rgb(247, 245, 242);
+}
+.MessageBox-1-imgbox{
+    flex: 2;
+ }
+.MessageBox-1-img{
+   width: 10vh;
+   height: 10vh;
+   border: 2px solid grey;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.MessageBox-1-text{
+   flex: 5;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin-left: 2vh;
+}
+.MessageBox-1-text-name{
+    font-size: 15px;
+    font-weight: 700;
+}
+.MessageBox-1-text-chat{
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 5px;
+    color: gray;
+}
+.MessageBox-1-timeago{
+    font-size: 11px;
+    font-weight: 300;
+    color: gray;
+    margin-top: 6px;
+}
+.MessageBox-1-timeagobox{
+    flex: 2;
+}

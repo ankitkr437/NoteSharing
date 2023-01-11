@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.comment-box-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+}
+
+.comment-box-img{
+    width: 6vh;
+    height: 6vh;
+    box-sizing: border-box;
+    border: 1px solid rgb(50, 104, 101);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-box-message{
+    width: 80vw;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: rgb(219, 232, 238);
+    margin-left: 1vw;
+    padding: 7px 10px;
+}
+.comment-box-message-name{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1vh;
+}
+.comment-box-message-name-value{
+     margin: 0;
+     font-size: 14px;
+     font-weight: 600;
+     color: darkblue;
+}
