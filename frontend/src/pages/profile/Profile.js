@@ -11,6 +11,7 @@ import {
 import { publicRequest } from "../../requestMethods";
 import { useDispatch, useSelector } from "react-redux";
 import {follow,unFollow} from "../../redux/userRedux";
+import Loader from '../../loader/Loader'
 const Profile = () => {
 
   const { userId } = useParams();
@@ -59,7 +60,7 @@ const Profile = () => {
   };
   const totallikes=post?.reduce((a,v) =>  a = a + v?.likes.length , 0 )
   const totalviews=post?.reduce((a,v) =>  a = a + v?.buy.length , 0 )
-   
+  
   return (
     <>
       {
@@ -190,18 +191,25 @@ const Profile = () => {
                 </div>
             </div>
             <div className="user-timeline">
-              <div className="user-post">
+              <div className="user-post-profile">
                 {
-                  post ? post.map((note) => (
+                  post && post.map((note) => (
                     <Post note={note} postUser={user} key={note._id} />
-
-                  )) : <Spinner animation="grow" style={{ width: "20vw", height: "10vw", marginTop: "30vh", color: "yellowgreen", marginLeft: "10vw" }} />}
+                  ))
+                }
               </div>
                
             </div>
           </div>
 
-        ) : <Spinner animation="grow" style={{ width: "15vw", height: "15vw", marginTop: "10vh", color: "yellowgreen", marginLeft: "40vw" }} />
+        )
+        :
+        <div style={{paddingTop:"20vh"}}>
+        <Loader />
+        <h4 style={{textAlign:"center"}}>
+          Fetching...
+        </h4>
+        </div>
       }
 
     </>

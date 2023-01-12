@@ -52,8 +52,9 @@
      .sell-container-home{
         height: 6vh;
         margin-bottom: 4vh;
-        padding-bottom: 8vh;
-        width: 97%;
+        padding-bottom: 4vh;
+        padding-top: 10vh;
+        width: 100%;
     }
     .sell-post-home{
         display: flex;

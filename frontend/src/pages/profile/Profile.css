@@ -188,11 +188,11 @@
     font-weight: 300;
 }
 
-.user-post{
+.user-post-profile{
     display: flex;
     flex-direction: column;
-    flex: 4;
-  margin-right: 3vw;
+    width: 100%;
+    align-items: center;
 }
 .user-timeline{
   display: flex;
@@ -201,24 +201,11 @@
   margin-top: 3vh;
   padding-left: 4vw;
 }
-/* .user-right{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    margin-left: 3vw;
-    margin-right: 1vw;
-    height: 100%;
-} */
 .contributions-phone{
     display: none;
 }
 
 @media only screen and (max-width: 768px) {
-    .user-post{
-        
-        flex: 1;
-      margin-right: 0vw;
-    }
     .contributions-pc{
         display: none;
     }
@@ -269,8 +256,8 @@
     .start-conversation-1{
         height: 5vh;
     }
-    .user-post{   
-        flex: 100;
+    .user-post-profile{   
+      width: 100%;
       margin-right: 0vw;
     }
     .user-timeline{

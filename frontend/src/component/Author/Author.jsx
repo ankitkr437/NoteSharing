@@ -1,12 +1,10 @@
 import React, { Component, createContext } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
-import { Spinner } from "react-bootstrap";
+ 
 import "./Author.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Profile from "../../pages/profile/Profile";
+import {publicRequest} from '../../requestMethods'
 
 const Author = () => {
   const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
@@ -18,12 +16,12 @@ const Author = () => {
   const TotalPublishNotes = createContext();
   useEffect(() => {
     const fetchalluser = async () => {
-      const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/users/");
+      const res = await publicRequest.get("users/");
       setusers(res.data);
       setisuser(true);
     };
     const fetchallnotes = async () => {
-      const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/notes/");
+      const res = await publicRequest.get("notes/");
       setnotes(res.data);
       setisnotes(true);
     };
@@ -54,10 +52,10 @@ const Author = () => {
       return b.length - a.length;
     });
   }
-  console.log(showauthor);
-
+   console.log(showauthor)
   return (
     <>
+      <p className="featured-author">Featured Authors</p>
       <div className="author-container">
         {isnotes &&
           isuser &&

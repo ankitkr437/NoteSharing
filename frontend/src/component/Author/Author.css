@@ -35,14 +35,10 @@
     font-size: 16px;
     font-weight: 600;
 }
-/* .author-desc{
-    font-size: 14px;
-    max-width: 160px;
-    font-weight: 400;
-    text-align: center;
-    max-height: 10px;
-    color: rgb(83, 96, 96);
-} */
+.featured-author{
+    font-size: 27px;
+    font-weight: 200;
+}
 .author-notes-followers-container{
     display: flex;
 }
@@ -69,10 +65,13 @@
 
 @media only screen and (max-width: 600px) {
 
+    .featured-author{
+        font-size: 24px;
+    }
   .author-container{
-    width: 95vw;
+    width: 100%;
     margin-top: 0vh;
-    padding:  3vh 0vh;
+    padding: 2vh 0vh;
    }
    .author-card{
     min-width: 135px;
