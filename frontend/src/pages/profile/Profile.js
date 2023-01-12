@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./Profile.css";
-import Profilepost from '../home/center/Profilepost'
+import Post from '../../component/post/Post'
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -14,19 +14,18 @@ import {follow,unFollow} from "../../redux/userRedux";
 const Profile = () => {
 
   const { userId } = useParams();
-  
   const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
   const [user, setuser] = useState({}) 
   const [post, setpost] = useState([])
   const {currentUser:currentuser}=useSelector((state)=>state.user)
   const [isfollow, setisfollow] = useState(
-    currentuser?.followings.includes(user?.id)
+    currentuser?.followings.includes(userId)
   )
   const [followerslength, setfollowerslength] = useState(
     user?.followers?.length
   );
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     const fetchuser = async () => {
       const res = await axios.get(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${userId}`);
@@ -38,22 +37,20 @@ const Profile = () => {
     }
     fetchuser();
     fetchpost();
-  }, [userId])
- 
+  }, [userId,isfollow])
   const FollowHandle = async () => {
-    console.log("jhasvdh")
     try {
       if (isfollow) {
         await publicRequest.put(`/users/${user._id}/unfollow`, {
           userId: currentuser._id,
         });
-        dispatch(unFollow(user._id));
+        dispatch(unFollow(user?._id));
         setfollowerslength(followerslength-1)
       } else {
         await publicRequest.put(`/users/${user._id}/follow`, {
           userId: currentuser._id,
         });
-        dispatch(follow(user._id));
+        dispatch(follow(user?._id));
         setfollowerslength(followerslength+1)
       }
       setisfollow(!isfollow)
@@ -132,13 +129,12 @@ const Profile = () => {
                 <p className="number-below">Followings</p>
                 </div>
                 <div className="follow-chat">
-                    {
-                      currentuser._id !== userId && (
-                        <button className="follow" onClick={FollowHandle} >
-                          {isfollow ? "unfollow" : "follow"}
-                          {isfollow ? <Remove className="follow-icon" /> : <Add className="follow-icon" />}
-                        </button>)
-                    }
+                {user.username !== currentuser.username && (
+            <button className="follow" onClick={FollowHandle}>
+            {isfollow ? "Unfollow" : "Follow"}
+            {isfollow ? <Remove /> : <Add />}
+            </button>
+                )}
                </div>
               
               <div className="contributions-pc">
@@ -196,8 +192,8 @@ const Profile = () => {
             <div className="user-timeline">
               <div className="user-post">
                 {
-                  post ? post.map((y) => (
-                    <Profilepost x={y} currentprofileuser={user} key={y._id} />
+                  post ? post.map((note) => (
+                    <Post note={note} postUser={user} key={note._id} />
 
                   )) : <Spinner animation="grow" style={{ width: "20vw", height: "10vw", marginTop: "30vh", color: "yellowgreen", marginLeft: "10vw" }} />}
               </div>

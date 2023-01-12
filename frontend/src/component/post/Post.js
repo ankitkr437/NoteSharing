@@ -4,85 +4,65 @@ import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { format } from 'timeago.js';
-import './Profilepost.css'
+import './Post.css'
 import {useSelector} from 'react-redux'
-const Posttime = ({ x,currentprofileuser}) => {
-
+import { publicRequest } from "../../requestMethods";
+const Post = ({note,postUser}) => {
      
     const {currentUser } = useSelector((state)=>state.user)
     const user=currentUser
     const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
-    const [like, setlike] = useState(x.likes.length);
+    const [like, setlike] = useState(note.likes.length);
     const [islike, setislike] = useState(false);
-    const [isbuy, setisbuy] = useState(true);
     const [isseen, setisseen] = useState(false);
-    const [seen,setseen] =useState(x.buy.length);
-    const [users, setusers] = useState([])
-    // const [isfetchusers, setisfetchusers] = useState(false)
-    const [isfetchcomment, setisfetchcomment] = useState();
+    const [seen,setseen] =useState(note.buy.length);
     const [allcomment, setallcomment] = useState(0)
 
-    const audio= new Audio();
-    audio.src = "/music/like.wav";
-    const audio1= new Audio();
-  audio1.src = "/music/delete.wav";
-  const audioerror= new Audio();
-  audioerror.src = "/music/error.wav";
+    
     const navigate = useNavigate();
     useEffect(() => {
-        setislike(x.likes.includes(user._id));
-    }, [user._id, x.likes]);
+        setislike(note.likes.includes(user._id));
+    }, [user._id, note.likes]);
 
     useEffect(() => {
-        setisseen(x.buy.includes(user._id));
-       }, [user._id, x.seen]);
+        setisseen(note.buy.includes(user._id));
+       }, [user._id, note.seen]);
     useEffect(() => {
-        // const fetchalluser = async () => {
-        //     const res = await axios.get("https://handnoteapi.herokuapp.com/api/users/");
-        //     setusers(res.data)
-        //     setisfetchusers(true);
-        // }
         const fetchComment = async (req, res) => {
             try {
-                const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/comments/" + x._id)
+                const res = await publicRequest.get("comments/" + note._id)
                 setallcomment(res.data)
-                setisfetchcomment(true);
             }
             catch (err) {
                 console.log(err);
             }
         }
         fetchComment();
-        // fetchalluser();
+
     }, [])
 
     const likehandler = () => {
-        audio.play();
         try {
-            axios.put("https://notesharingbackend-ankitkr437.onrender.com/api/notes/" + x._id + "/like", { userId: user._id });
+            publicRequest.put("notes/" + note._id + "/like", { userId: user._id });
         } catch (err) { }
         setlike(islike ? like - 1 : like + 1);
         setislike(!islike);
     };
-    const seenhandler = () => {
+    const seenhandler = async () => {
         try {
-          axios.put("https://notesharingbackend-ankitkr437.onrender.com/api/notes/" +x._id + "/buy", { userId: user._id });
+          await publicRequest.put("notes/" +note._id + "/buy", { userId: user._id });
         } catch (err) {}
         setseen(isseen? seen - 1 : seen + 1);
         setisseen(!isseen);
-        window.open(x.notefilename, '_blank').focus();
+        window.open(note.notefilename, '_blank').focus();
       }; 
     const DeleteNotes= async()=>{
         let response = prompt(`Do you really want to delete this note if yes the type "YES" or type "NO" `);
-        console.log(response)
-        audio1.play();
-        
             try {
-                response==="YES" && await axios.delete(`https://notesharingbackend-ankitkr437.onrender.com/api/notes/${x._id}`,{userId:user._id});
+                response==="YES" && await publicRequest.delete(`notes/${note._id}`,{userId:user._id});
                 response==="YES" && alert("notes deleted successfully")
              response==="YES" && navigate('/');
             } catch (err) {
-              audioerror.play();
               alert("sorry you can not delete this note")
                 console.log("unsuccess");
             }
@@ -92,30 +72,30 @@ const Posttime = ({ x,currentprofileuser}) => {
 
 
     return <>
- <div className="post-container" key={x._id} >
+ <div className="post-container" key={note._id} >
             <div className="post-topbar" style={{lineHeight:"1"}}>
-                <Link to={`/profile/${x.userId}`} style={{ textDecoration: "none" }}>
-                    <img  src={currentprofileuser && currentprofileuser.profilePicture?currentprofileuser.profilePicture:pf + "DefaultPic.png"} className="post-topbar-img" ></img>
+                <Link to={`/profile/${note.userId}`} style={{ textDecoration: "none" }}>
+                    <img  src={postUser && postUser.profilePicture?postUser.profilePicture:pf + "DefaultPic.png"} className="post-topbar-img" ></img>
                 </Link>
                 <div className="post-topbar-desc">
-                <Link to={`/profile/${x.userId}`} style={{ textDecoration: "none" }}>
-                    <p className="post-topbar-name">{currentprofileuser && currentprofileuser.username}</p>
+                <Link to={`/profile/${note.userId}`} style={{ textDecoration: "none" }}>
+                    <p className="post-topbar-name">{postUser && postUser.username}</p>
                     </Link>
                     <div className="post-topbar-follow-ago-container">
                         <p >
-                            {currentprofileuser && currentprofileuser.followers.length} Followers  
+                            {postUser && postUser.followers.length} Followers  
                         </p>
                         <p>.</p>
                         <p >
-                            {format(x.createdAt)}
+                            {format(note.createdAt)}
                         </p>
                     </div>
                 </div>
                 
                {
-                   user && x && (x.userId === user._id) &&
+                   user && note && (note.userId === user._id) &&
                    <div className="post-topbar-edit-delete-container">
-                        <Link to={`/note/update/${x._id}`} style={{ textDecoration: "none" }} className="post-topbar-edit-icon">
+                        <Link to={`/note/update/${note._id}`} style={{ textDecoration: "none" }} className="post-topbar-edit-icon">
                   <img src="/image/icons8-edit-100.png" />
                   </Link>
                   <img src="/image/icons8-delete-90.png" className="post-topbar-delete-icon" onClick={DeleteNotes}/>
@@ -126,23 +106,20 @@ const Posttime = ({ x,currentprofileuser}) => {
             <div className="main-post" style={{ height: "57vh" }}>
             
                     <div className="main-post-img-container" onClick={seenhandler}>
-                      <img src={x.thumbnailfilename?x.thumbnailfilename:pf+"images-notes.jpg"} alt="note-thumbnail"></img>
-                      {/* <Link to={x.notefilename} style={{ textDecoration: "none" }} className="View-pdf"> */}
+                      <img src={note.thumbnailfilename?note.thumbnailfilename:pf+"images-notes.jpg"} alt="note-thumbnail"></img>
                       <div className="View-pdf-1" onClick={seenhandler}>
                          <p>View-pdf</p>
                         <img src="/image/icons8-view-50.png"/>
                     </div>
-                    {/* </Link> */}
                    </div>
                 <div className="main-post-about" style={{lineHeight:"1.4"}}>
-                <Link to={`/notes/${x._id}`} style={{ textDecoration: "none" }}>
-                    <p className="main-post-notename">{x.notename}</p>
+                <Link to={`/notes/${note._id}`} style={{ textDecoration: "none" }}>
+                    <p className="main-post-notename">{note.notename}</p>
                 </Link>
                     <p className="main-post-description">Description:</p>
                     <p className="main-post-desc">
-                        {x.desc}
+                        {note.desc}
                     </p>
-                    {/* <p className="main-post-note-price">Notes Price:{x.price || 0} $</p> */}
                 </div>
             </div>
           
@@ -153,7 +130,7 @@ const Posttime = ({ x,currentprofileuser}) => {
                }
                 <p style={{marginTop:"5px"}}>{like}</p>
             </div>
-            <Link to={`/viewcomment/${x._id}`} className="link-in-comment">
+            <Link to={`/viewcomment/${note._id}`} className="link-in-comment">
             <div className="post-reaction">
                 <img src="/image/icons8-comment-64.png" style={{marginTop:"1vh"}}></img>
                 <p>{allcomment.length}</p>
@@ -161,7 +138,7 @@ const Posttime = ({ x,currentprofileuser}) => {
             </Link>
             <div className="post-reaction"  >
                 <img src="/image/icons8-view-64.png" tyle={{marginTop:"1vh"}}></img>
-                <p>{x.buy.length}</p>
+                <p>{note.buy.length}</p>
             </div>
           </div>
  
@@ -171,5 +148,5 @@ const Posttime = ({ x,currentprofileuser}) => {
     </>;
 };
 
-export default Posttime;
+export default Post;
 

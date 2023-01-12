@@ -5,7 +5,7 @@ import Regiser from './pages/register/Register';
 import Home from './pages/home/Home';
 import Topbar from './component/topbar/Topbar';
 import Profile from './pages/profile/Profile';
-import Update from "./component/update/Update";
+import UpdateUser from "./component/updateUser/UpdateUser";
 import Comment from '../src/component/comment/Comment';
 import UpdatePost from "./component/updatepost/UpdatePost";
 import Chat from "./pages/home/right/Chat/Chat.jsx";
@@ -13,7 +13,7 @@ import HomepageMessage from "./pages/home/right/HomepageMessageBox/HomepageMessa
 import {useSelector} from 'react-redux'
 function App() {
   const {currentUser}=useSelector((state)=>state.user)
-  console.log(currentUser)
+
   return (
     <>
     <Topbar />
@@ -25,7 +25,7 @@ function App() {
      <Route path="/message/:currentchatId" element={<Chat />} />
      <Route path="/messageauthor" element={<HomepageMessage />} />
      <Route path="/profile/:userId"   element={<Profile />} />
-     <Route path="/profile/update"   element={<Update />} />
+     <Route path="/profile/update"   element={<UpdateUser />} />
      <Route path="/note/update/:notesid"   element={<UpdatePost />} />
      <Route path="/viewcomment/:notesid"   element={<Comment />} />
      </Routes>

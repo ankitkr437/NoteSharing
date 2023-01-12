@@ -1,16 +1,15 @@
 import React, { useContext, useRef } from "react";
-import "./Update.css";
+import "./UpdateUser.css";
 import { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import { AuthContext } from "../../context/AuthContext";
-import { CloseRounded } from "@material-ui/icons";
-import { Spinner, Form, Button } from 'react-bootstrap';
-const Update = () => {
+import {publicRequest} from '../../requestMethods';
+import {useSelector} from 'react-redux'
 
+const UpdateUser = () => {
   const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
-  const { user } = useContext(AuthContext);
-
+  const {currentUser}=useSelector((state)=>state.currentUser)
+  const user=currentUser
   const [firstname, setfirstname] = useState();
   const [lastname, setlastname] = useState();
   const [country, setcountry] = useState();
@@ -20,21 +19,12 @@ const Update = () => {
   const [desc, setdesc] = useState();
   const [photo, setphoto] = useState(null);
   const [password, setpassword] = useState();
-  const [Loading,setLoading] =useState(false);
-  const [image,setimage] =useState("");
-  const buttonupdate  =useRef();
 
-
-  const audio= new Audio();
-  audio.src = "/music/update.wav";
-  const audioerror= new Audio();
-  audioerror.src = "/music/erroe.wav";
   const navigate = useNavigate();
-
 
   const UpdateFormHandler = async(e) => {
     e.preventDefault();
-   
+    
     const newUser = {
       userId: user._id,
       firstname:firstname,
@@ -48,32 +38,18 @@ const Update = () => {
     };
     if (photo) {
       const data = new FormData();
-      // const fileName = Date.now() + photo.name;
-      // data.append("name", fileName);
       data.append("file", photo);
       data.append("upload_preset", 'handnoteimages');
       const res=await axios.post("https://api.cloudinary.com/v1_1/dw2fok6if/image/upload",data)
       newUser.profilePicture = await  res.data.secure_url;
-      // try {
-      //   await axios.post("https://handnoteapi.herokuapp.com/api/upload", data);
-      //   alert("successfully uploaded...")
-      //   navigate('/');
-      // } catch (err) {
-      //   audioerror.play();
-      // }
-      
-      console.log(res.data.secure_url);
-      console.log(newUser.profilePicture)
     }
     try{
-        await axios.put(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${user._id}`,newUser);
-        audio.play();
+        await publicRequest.put(`users/${user._id}`,newUser);
         alert("successfully uploaded...")
         navigate('/');
       }
       catch(err){
-       console.log(err);
-       audioerror.play();
+       console.log(err)
       }
   }
 
@@ -191,8 +167,5 @@ const Update = () => {
 
 };
 
-export default Update;
-
-{/* 
-
-          </div> */}
+export default UpdateUser;
+ 

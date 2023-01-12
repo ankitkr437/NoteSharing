@@ -124,13 +124,7 @@ function UpdatePost() {
                    
                 ></input>
               </div>
-
-              
-
-               
- 
-              
-              <button type="submit"
+        <button type="submit"
                 className="Update-post-container-form-submit"
               >Update-Note</button>
 

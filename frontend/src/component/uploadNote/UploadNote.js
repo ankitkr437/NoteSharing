@@ -1,16 +1,12 @@
 import React, { useContext, useRef } from "react";
-import "./SellHome.css";
+import "./UploadNote.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import {useSelector} from 'react-redux'
-import "./Sellform.css";
-
-
-const Sell = () => {
-
- 
+import "./UploadNoteForm.css";
+const UploadNote = () => {
   const {currentUser } = useSelector((state)=>state.user)
-    const user=currentUser
+  const user=currentUser
   const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
 
   const ShowForm = useRef();
@@ -29,8 +25,8 @@ const Sell = () => {
   const SellFormSubmitHandler = async (e) => {
 
      alert("notes uploading started...")
-    e.preventDefault();
-    audio.play();
+     e.preventDefault();
+     audio.play();
     
     const newNote = {
       userId: user._id,
@@ -40,30 +36,12 @@ const Sell = () => {
     };
     if (fileimg) {
       const data = new FormData();
-      // const fileName = Date.now() + fileimg.name;
-      // data.append("name", fileName);
       data.append("file", fileimg);
       data.append("upload_preset", 'handnoteimages');
       const res=await axios.post("https://api.cloudinary.com/v1_1/dw2fok6if/image/upload",data)
       newNote.thumbnailfilename = await  res.data.secure_url;
       
-     
-      // try {
-      //   await axios.post("https://handnoteapi.herokuapp.com/api/upload", data);
-       
-      // } catch (err) {}
     }
-    // if(notefile){
-    //   const data = new FormData();
-    //   const fileName = Date.now() + notefile.name;
-    //   data.append("pdfname", fileName);
-    //   data.append("pdffile", notefile);
-    //   newNote.notefilename = fileName;
-
-    //   try {
-    //     await axios.post("https://handnoteapi.herokuapp.com/api/upload/pdf", data);
-    //   } catch (err) {}
-    // }
     try {
       await axios.post("https://notesharingbackend-ankitkr437.onrender.com/api/notes", newNote);
       window.location.reload();
@@ -111,16 +89,6 @@ const Sell = () => {
               maxLength="300"
               required
             ></input>
-            {/* <input
-              type="number"
-              placeholder="Price"
-              className="sell-form-price"
-              ref={price}
-              required
-            ></input> */}
-             {/* <label for="pdf-file-upload" class="custom-file-upload">
-             Url of notes
-            </label> */}
             <input
               type="text"
               id="pdf-file-upload"
@@ -147,4 +115,4 @@ const Sell = () => {
   );
 };
 
-export default Sell;
+export default UploadNote;

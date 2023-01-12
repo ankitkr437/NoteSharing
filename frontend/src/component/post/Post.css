@@ -5,7 +5,7 @@
 }
 .post-container{
     display: flex;
-    height: 82vh;
+    height: 82vh; 
     width: 60%;
     flex-direction: column;
     margin-bottom: 8vh;
@@ -164,7 +164,7 @@
         height: 56vh;
         padding-bottom:2vh;
         margin-bottom: 3vh;
-        width: 97%;
+        width: 100%;
     }
     .post-topbar-img{
         width: 42px;
@@ -243,3 +243,16 @@
       }
   }
 
+
+
+@media only screen and (max-width: 700px) {
+    .post-reaction-container{
+        margin-top: -2vh;
+    }
+    .post-container{
+        height: 65vh;
+    }
+    .post-reaction{
+        height: 6vh;
+    }
+}
