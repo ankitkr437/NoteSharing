@@ -109,7 +109,7 @@ router.put("/:id/unfollow", async (req, res) => {
 //get all user
 router.get("/", async (req, res) => {
   try {
-    const data =await User.find();
+    const data =await User.find().limit(10);
     res.status(200).json(data);
   } catch (err) {
     res.status(404).json(err);
