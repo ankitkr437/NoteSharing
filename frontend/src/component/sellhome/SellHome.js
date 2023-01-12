@@ -2,16 +2,15 @@ import React, { useContext, useRef } from "react";
 import "./SellHome.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { AuthContext } from "../../context/AuthContext";
-
-import { CloseRounded } from "@material-ui/icons";
+import {useSelector} from 'react-redux'
 import "./Sellform.css";
 
 
 const Sell = () => {
 
  
-  const { user } = useContext(AuthContext);
+  const {currentUser } = useSelector((state)=>state.user)
+    const user=currentUser
   const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
 
   const ShowForm = useRef();

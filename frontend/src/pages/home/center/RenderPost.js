@@ -9,7 +9,7 @@ import {
 } from "@material-ui/icons";
 import { Skeleton } from "@material-ui/lab";
 import Media from "../../../loader/Loader.js";
-import { AuthContext } from "../../../context/AuthContext";
+import {useSelector} from 'react-redux'
 const RenderPost = () => {
 
 
@@ -22,17 +22,9 @@ const RenderPost = () => {
   const [notes, setnotes] = useState([]);
   const [isnotes, setisnotes] = useState(false);
 
-
-  const { user ,searchedvalue,issearched} = useContext(AuthContext);
- 
-
- 
-  const User = user;
- 
-   
-
-  
- 
+  const {currentUser,searchedvalue} = useSelector((state)=>state.user)
+  const issearched=searchedvalue
+  const user=currentUser
   useEffect(() => {
     const fetchallusers = async () => {
       const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/users/");
@@ -64,8 +56,8 @@ const RenderPost = () => {
   
     if(!isnotes || !isfetchusers) return (
       <>
-            <Media />
-        </>
+        <Media />
+      </>
     )
    
   return (

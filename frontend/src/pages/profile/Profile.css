@@ -133,13 +133,11 @@
      background-color: rgb(115, 155, 247);
     border: none;
     display: flex;
-    width:9vw;
-    border-radius: 5vh;
     align-items: center;
-    justify-content: center;
     font-size: 16px;
     font-weight: 500;
     margin-right: 5vh;
+    padding: 10px 15px;
 }
 .follow:hover{
     background-color: rgb(82, 124, 224);
@@ -157,6 +155,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     border: 1px solid darkcyan;
     background-color: rgb(115, 155, 247);
     border-radius: 5px;
@@ -177,7 +176,6 @@
     display: flex;
     padding-left: 2vh;
     padding-top: 2vh;
-    flex-direction: column;
 }
 .gain-value{
     font-size: 20px;

@@ -6,9 +6,7 @@ import { useState, useEffect } from "react";
 import { format } from 'timeago.js';
 import { useNavigate } from "react-router";
  
-import { AuthContext } from "../../../context/AuthContext";
-
-
+import {useSelector} from 'react-redux'
 const audio= new Audio();
   audio.src = "/music/like.wav";
   const audio1= new Audio();
@@ -16,9 +14,10 @@ const audio= new Audio();
   const audioerror= new Audio();
   audioerror.src = "/music/error.wav";
 const HomePost = ({x}) => {
-    const { user } = useContext(AuthContext);
+    const {currentUser } = useSelector((state)=>state.user)
+    const user=currentUser
     const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
-     
+    
     const [isfetchcomment,setisfetchcomment]=useState();
     const [like, setlike] = useState(x.likes.length);
     const [allcomment,setallcomment]=useState(0)

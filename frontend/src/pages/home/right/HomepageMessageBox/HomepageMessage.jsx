@@ -3,13 +3,14 @@ import axios from 'axios';
 import { useState, useEffect, useRef } from "react";
 import './HomepageMessage.css'
 import { Link } from "react-router-dom";
-
-import { AuthContext } from '../../../../context/AuthContext.js'
+import {useSelector} from 'react-redux'
 import HomeMessageBox from '../HomeMessageBox/HomeMessageBox.jsx'
 function HomepageMessage() {
 
 
-  const { user } = useContext(AuthContext);
+  const {currentUser,searchedvalue} = useSelector((state)=>state.user)
+  const issearched=searchedvalue
+  const user=currentUser
   const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
   const [conversationspeople, setconversationspeople] = useState([]);
   

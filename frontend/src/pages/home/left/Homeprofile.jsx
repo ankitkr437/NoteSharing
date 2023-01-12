@@ -8,6 +8,7 @@ import { AuthContext } from "../../../context/AuthContext.js";
 import Footer from '../../../component/footer/Footer.jsx'
 import Media from '../../../loader/Loader.js'
 import '../../../component/topbar/Topbar.css'
+import {useSelector} from 'react-redux'
 const Homeprofile = () => {
 
     const [search,setsearch] =useState("");
@@ -17,7 +18,8 @@ const Homeprofile = () => {
     
     const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
   
-    const { user ,isFetching} = useContext(AuthContext);
+    const {currentUser,isFetching} = useSelector((state)=>state.user)
+    const user=currentUser
        
     
       const logouthandler=()=>{

@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import "./Sell.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { AuthContext } from "../../context/AuthContext";
+import {useSelector} from 'react-redux'
 const Sell = () => {
-    const {user}=useContext(AuthContext);
+  const {currentUser } = useSelector((state)=>state.user)
+  const user=currentUser
     const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
   return <>
       <div className="sell-container">

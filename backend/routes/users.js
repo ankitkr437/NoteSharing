@@ -2,7 +2,7 @@ import express  from "express";
 const router = express.Router();
 import bcrypt from 'bcrypt'
 import User from '../model/Userschema.js'
-
+import Note from '../model/Userschema.js'
 
 
 //update user
@@ -57,25 +57,13 @@ router.put("/:id", async (req, res) => {
     }
   });
 
-  //follow a user 
+   
 
-// router.put("/:id/followunfollow", async (req, res) => {
-//     try {
-//       const note = await User.findById(req.params.id);
-//       if (!User.followers.includes(req.body.userId)) {
-//         await User.updateOne({ $push: { followers: req.body.userId } });
-//         res.status(200).json("The note has been liked");
-//       } else {
-//         await note.updateOne({ $pull: { likes: req.body.userId } });
-//         res.status(200).json("The note has been disliked");
-//       }
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
-//   });
+
+//follow a user
 
 router.put("/:id/follow", async (req, res) => {
-  
+  if (req.body.userId !== req.params.id) {
     try {
       const user = await User.findById(req.params.id);
       const currentUser = await User.findById(req.body.userId);
@@ -89,13 +77,15 @@ router.put("/:id/follow", async (req, res) => {
     } catch (err) {
       res.status(500).json(err);
     }
- 
+  } else {
+    res.status(403).json("you cant follow yourself");
+  }
 });
 
 //unfollow a user
 
 router.put("/:id/unfollow", async (req, res) => {
-  // if (req.body.userId !== req.params.id) {
+  if (req.body.userId !== req.params.id) {
     try {
       const user = await User.findById(req.params.id);
       const currentUser = await User.findById(req.body.userId);
@@ -109,8 +99,12 @@ router.put("/:id/unfollow", async (req, res) => {
     } catch (err) {
       res.status(500).json(err);
     }
-  
+  } else {
+    res.status(403).json("you cant unfollow yourself");
+  }
 });
+
+ 
 
 //get all user
 router.get("/", async (req, res) => {

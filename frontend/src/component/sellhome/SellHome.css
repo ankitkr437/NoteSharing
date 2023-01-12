@@ -49,12 +49,9 @@
        width: 5vh;
        height: 5vh;
      }
-     .sell-container-home {
-        width: 91%;
-     }
      .sell-container-home{
         height: 6vh;
-        margin-bottom: 0vh;
+        margin-bottom: 4vh;
         padding-bottom: 8vh;
         width: 97%;
     }

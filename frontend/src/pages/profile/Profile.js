@@ -1,150 +1,72 @@
 import React, { useContext } from "react";
 import "./Profile.css";
-import Right from '../home/right/Right';
-import Profilepost from '../home/left/Profilepost'
+import Profilepost from '../home/center/Profilepost'
 import { Link, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {totallikes} from './Count.js';
 import axios from "axios";
 import { Spinner } from 'react-bootstrap';
-
-import { AuthContext } from "../../context/AuthContext";
 import {
   Add, Remove
 } from "@material-ui/icons";
+import { publicRequest } from "../../requestMethods";
+import { useDispatch, useSelector } from "react-redux";
+import {follow,unFollow} from "../../redux/userRedux";
 const Profile = () => {
 
   const { userId } = useParams();
-
-  const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
-  const [user, setuser] = useState({})
-  const[totallikes,settotallikes] =useState(0)
-  const[totalviews,settotalviews] =useState(0)
-  const [isfetchfollowers, setisfetchfollowers] = useState(false);
-    const [isfetchfollowings, setisfetchfollowings] = useState(false);
   
-    
-  const [isfetchuser, setisfetchuser] = useState(false)
-  const [isfetchpost, setisfetchpost] = useState(false)
-  const [count, setcount] = useState(0)
+  const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
+  const [user, setuser] = useState({}) 
   const [post, setpost] = useState([])
-  const [isfollow, setisfollow] = useState(false)
-  const [followerslength, setfollowerslength] = useState(0);
-  const [followingslength, setfollowingslength] = useState(0);
-  const [conversationspeople,setconversationspeople]=useState([]) 
-  const [currentconversation,setcurrentconversation]=useState(null)
-      const [isfetchcurrentconversation,setisfetchcurrentconversation]=useState(false)
-  const { user: currentuser, dispatch } = useContext(AuthContext);
-
-  console.log(followerslength)
-  console.log(followingslength)
-  const audio = new Audio();
-  audio.src = "/music/follow.wav";
-
+  const {currentUser:currentuser}=useSelector((state)=>state.user)
+  const [isfollow, setisfollow] = useState(
+    currentuser?.followings.includes(user?.id)
+  )
+  const [followerslength, setfollowerslength] = useState(
+    user?.followers?.length
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchuser = async () => {
       const res = await axios.get(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${userId}`);
-
       setuser(res.data);
-      setisfetchuser(true);
     }
     const fetchpost = async () => {
       const res = await axios.get(`https://notesharingbackend-ankitkr437.onrender.com/api/notes/profile/${userId}`);
       setpost(res.data);
-      setisfetchpost(true);
     }
-
     fetchuser();
     fetchpost();
-
   }, [userId])
  
-
-  //for chat 
-
-  useEffect(() => {
-    const fetchallconversationspeople = async () => {
-      try {
-        const res = await axios.get(
-          "https://notesharingbackend-ankitkr437.onrender.com/api/conversations/" + currentuser._id
-        );
-        setconversationspeople(res.data.sort((n1, n2) => {
-          return new Date(n2.createdAt) - new Date(n1.createdAt)
-        }));
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchallconversationspeople();
-  }, [currentuser._id]);
-
-  let navigate = useNavigate();
-  useEffect(()=>{
-    setcurrentconversation(conversationspeople?.find((x) =>
-    JSON.stringify(x.members) === JSON.stringify([currentuser._id,userId]) ||
-    JSON.stringify(x.members) === JSON.stringify([userId,currentuser._id])
-     ))
-  },[userId])
-  const navigateHandler= async()=>{
-    if( currentuser._id === userId){
-      alert('You can not chat with yourself')
-    }
-    else if(currentconversation===undefined){
-     const res=await axios.post("https://notesharingbackend-ankitkr437.onrender.com/api/conversations",
-     {
-       senderId:currentuser._id,
-       receiverId:userId
-     }) 
-     setcurrentconversation(res)
-    }
-     currentconversation!==undefined && navigate(`/message/${currentconversation?._id}`)
-  }
-
-
-
-
-  useEffect(() => {
-    if(isfetchuser){
-    setisfollow(currentuser.followings.includes(userId))
-    setfollowerslength(user.followers.length)
-    setfollowingslength(user.followings.length)}
-  }, [currentuser.followings])
-
   const FollowHandle = async () => {
-    audio.play();
+    console.log("jhasvdh")
     try {
       if (isfollow) {
-        await axios.put(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${userId}/unfollow`, { userId: currentuser._id });
-        dispatch({ type: "UNFOLLOW", payload: user._id });
+        await publicRequest.put(`/users/${user._id}/unfollow`, {
+          userId: currentuser._id,
+        });
+        dispatch(unFollow(user._id));
+        setfollowerslength(followerslength-1)
+      } else {
+        await publicRequest.put(`/users/${user._id}/follow`, {
+          userId: currentuser._id,
+        });
+        dispatch(follow(user._id));
+        setfollowerslength(followerslength+1)
       }
-      else {
-        await axios.put(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${userId}/follow`, { userId: currentuser._id });
-        dispatch({ type: "FOLLOW", payload: user._id });  
-      }
+      setisfollow(!isfollow)
+    } catch (err) {
     }
-    catch (err) {
-      console.log(err);
-    }
-    setfollowerslength(isfollow?followerslength-1:followerslength+1)
-    setisfollow(!isfollow)
-  }
-
-   useEffect(()=>{
-     post.map((x)=>{
-      settotallikes(totallikes+x.likes.length)
-      settotalviews(totalviews+x.buy.length)
-     })
-   },[])
+  };
+  const totallikes=post?.reduce((a,v) =>  a = a + v?.likes.length , 0 )
+  const totalviews=post?.reduce((a,v) =>  a = a + v?.buy.length , 0 )
    
-  // useEffect(()=>{
-    
-  // },[])
   return (
     <>
       {
-        isfetchuser && user.username ? (
+        user && user.username ? (
           <div className="profile-container">
             <div className="profile-top">
               <div className="profile-top-img-container">
@@ -217,39 +139,21 @@ const Profile = () => {
                           {isfollow ? <Remove className="follow-icon" /> : <Add className="follow-icon" />}
                         </button>)
                     }
-                    {
-                      currentuser._id !== userId && (
-                        currentconversation!==undefined?
-                        <div className="start-conversation-1" onClick={navigateHandler}>
-                      <div className="button-text">
-                      <p>Go</p>
-                        <img src="/image/fast-forward-button.png" />
-                       </div>
-                    </div>
-                   :
-                    <div className="start-conversation-1" onClick={navigateHandler}>
-                      <div className="button-text">
-                      <p>Chat</p>
-                        <img src="/image/icons8-chat-bubble-90.png" />
-                      </div>
-                    </div>
-           )
-                    }
-                  </div>
+               </div>
               
               <div className="contributions-pc">
-              <div className="gain-container">
-                  <img src="/image/icons8-microsoft-publisher-50.png" /> 
+              < div className="gain-container">
                  <div className="total-gain">
-                 <p className="gain-value">{isfetchpost && post.length}</p>
-                 <p className="gain-desc">Published Notes</p>
+                 <img src="/image/icons8-microsoft-publisher-50.png" /> 
+                 <p className="gain-value">{post && post.length}</p>
                  </div>
+                 <p className="gain-desc">Published Notes</p>
                 </div>
 
                 <div className="gain-container">
                 <img src="/image/icons8-like-64.png" /> 
                  <div className="total-gain">
-                 <p className="gain-value">{isfetchpost && totallikes}</p>
+                 <p className="gain-value">{post && totallikes}</p>
                  <p className="gain-desc">Total likes</p>
                  </div>
                 </div>
@@ -257,7 +161,7 @@ const Profile = () => {
                 <div className="gain-container">
                 <img src="/image/icons8-view-50.png" /> 
                  <div className="total-gain">
-                 <p className="gain-value">{isfetchpost && totalviews}</p>
+                 <p className="gain-value">{post && totalviews}</p>
                  <p className="gain-desc">Total views</p>
                  </div>
                 </div>
@@ -268,7 +172,7 @@ const Profile = () => {
             <div className="gain-container">
                   <img src="/image/icons8-microsoft-publisher-50.png" /> 
                  <div className="total-gain">
-                 <p className="gain-value">{isfetchpost && post.length}</p>
+                 <p className="gain-value">{post && post.length}</p>
                  <p className="gain-desc">Published Notes</p>
                  </div>
                 </div>
@@ -276,7 +180,7 @@ const Profile = () => {
                 <div className="gain-container">
                 <img src="/image/icons8-like-64.png" /> 
                  <div className="total-gain">
-                 <p className="gain-value">{isfetchpost && totallikes}</p>
+                 <p className="gain-value">{post && totallikes}</p>
                  <p className="gain-desc">Total likes</p>
                  </div>
                 </div>
@@ -284,7 +188,7 @@ const Profile = () => {
                 <div className="gain-container">
                 <img src="/image/icons8-view-50.png" /> 
                  <div className="total-gain">
-                 <p className="gain-value">{isfetchpost && totalviews}</p>
+                 <p className="gain-value">{post && totalviews}</p>
                  <p className="gain-desc">Total views</p>
                  </div>
                 </div>
@@ -292,7 +196,7 @@ const Profile = () => {
             <div className="user-timeline">
               <div className="user-post">
                 {
-                  isfetchpost ? post.map((y) => (
+                  post ? post.map((y) => (
                     <Profilepost x={y} currentprofileuser={user} key={y._id} />
 
                   )) : <Spinner animation="grow" style={{ width: "20vw", height: "10vw", marginTop: "30vh", color: "yellowgreen", marginLeft: "10vw" }} />}

@@ -5,11 +5,12 @@ import {useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { format } from 'timeago.js';
 import './Profilepost.css'
-import { AuthContext } from "../../../context/AuthContext";
+import {useSelector} from 'react-redux'
 const Posttime = ({ x,currentprofileuser}) => {
 
      
-    const { user } = useContext(AuthContext);
+    const {currentUser } = useSelector((state)=>state.user)
+    const user=currentUser
     const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
     const [like, setlike] = useState(x.likes.length);
     const [islike, setislike] = useState(false);
