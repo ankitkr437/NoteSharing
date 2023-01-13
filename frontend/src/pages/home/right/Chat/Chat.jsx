@@ -10,17 +10,16 @@ import MessageBox from "../MessageBox/MessageBox.jsx";
 import ConversationBox from "../ConversationBox/ConversationBox.jsx";
 import OnlineAuthor from "../OnlineAuthor/OnlineAuthor.jsx";
 import HomepageMessage from "../HomepageMessageBox/HomepageMessage";
-import { AuthContext } from "../../../../context/AuthContext.js";
 import { io } from "socket.io-client";
+import { useSelector } from "react-redux";
 
 const Chat = () => {
-  // const [currentchat, setcurrentchat] = useState(null);
   const [messages, setmessages] = useState([]);
   const [newchat, setnewchat] = useState();
   const [arrivalmessage, setarrivalmessage] = useState(null);
   const [onlineusers, setonlineusers] = useState([]);
   const [iscurrentchat, setiscurrentchat] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { currentUser:user } = useSelector((state)=>state.user)
   const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
   const [conversationspeople, setconversationspeople] = useState([]);
   const [isfetchconversationspeople, setisfetchconversationspeople] =

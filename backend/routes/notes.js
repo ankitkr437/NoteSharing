@@ -123,18 +123,8 @@ router.get("/profile/:userId", async (req, res) => {
 //GET all featured authors
 router.get("/", async (req, res) => {
   try {
-     let users = await User.find();
-     const arr=[];
-     const featuredAuthors = await Promise.all(
-      users.map((user) => {
-        const x= Note.findOne({userId:user._id});
-         
-        arr.push(user)
-        arr.push(x);
-        return x;
-      })
-      );
-    res.status(200).json(arr);
+      const notes= await Note.find();
+      res.status(200).json(notes);
   } catch (err) {
     res.status(500).json(err);
   }

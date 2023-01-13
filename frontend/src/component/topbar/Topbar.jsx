@@ -1,36 +1,23 @@
 import React, { useContext, useEffect, useRef,Component } from "react";
 import "./Topbar.css";
-import { Link,useNavigate} from "react-router-dom";
+import { Link} from "react-router-dom";
 import {
-  Search,
-  Person,
-  Chat,
-  Notifications,
   LibraryBooksTwoTone,
-  ShoppingCart,
-  ShoppingCartOutlined,
   CloseRounded,
-  UpdateSharp
 } from "@material-ui/icons";
 import { useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
 import Footer from '../footer/Footer';
-import axios from "axios";
+import {publicRequest} from'../../requestMethods'
+import {useSelector,useDispatch} from 'react-redux'
+import {logout,search} from "../../redux/userRedux";
 const Topbar = () => {
-
-  const [search,setsearch] =useState("");
+  const {curreUser:user} =useSelector((state)=>state.user)
+  const [searchedItem,setsearch] =useState("");
   const menu=useRef();
-    
   const [placeholder, setplaceholder] = useState("..");
-  
   const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
-
-  const { user, isFetching, error, dispatch,searchedvalue,
-    searchdispatch,issearched } = useContext(AuthContext);
- 
-  
-
-   const MenuClickHandler=()=>{
+  const dispatch=useDispatch();
+  const MenuClickHandler=()=>{
     if(menu.current.style.display=="flex" )
     {
       menu.current.style.display="none";
@@ -38,19 +25,19 @@ const Topbar = () => {
     else if(menu.current.style.display="none" && user._id)
         menu.current.style.display="flex";
    }
-
-    
-  
+      
   const logouthandler=()=>{
-    console.log("logout")
-    localStorage.clear();
-    window.location.reload();
+    dispatch(logout());
   }
-  
+
    const searchsubmit=(e)=>{
     e.preventDefault();
-    searchdispatch({ type: "SEARCHING_NOTES", payload:search});
+    search(searchedItem);
    }
+   useEffect(()=>{
+    dispatch(search(null));
+  },[])
+
   return (
     <>
       <div className="topbar">
@@ -90,9 +77,6 @@ const Topbar = () => {
         <img src="https://img.icons8.com/color/48/undefined/facebook-messenger--v1.png" className="messenger-icon"/>
         </Link>
           }
-        {/* <Link to={`/`} style={{ textDecoration: "none",width:"50%" ,display:"flex",justifyContent:"center"}} className="topbar-right-img-link">
-            <img src={(user && user.profilePicture)?user.profilePicture:pf +"DefaultPic.png"} className="topbar-right-Img" onClick={MenuClickHandler}  />
-          </Link> */}
         </div>
       </div>
 
@@ -107,7 +91,6 @@ const Topbar = () => {
     <div className="menu-desc">
 
     <div>
-     {/* <p className="menu-username">{user?user.firstname+user.lastname:"Not Available"}</p> */}
      <p className="menu-username">{user?user.username:"Not Available"}</p>
      </div>
 

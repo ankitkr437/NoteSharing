@@ -1,27 +1,17 @@
 import React, { useContext, useRef } from "react";
 import "./HomeProfile.css";
 import { Link } from "react-router-dom";
-import axios from 'axios';
 import { useState, useEffect } from "react";
-import { CloseRounded} from "@material-ui/icons";
-import { AuthContext } from "../../../context/AuthContext.js";
-import Footer from '../../../component/footer/Footer.jsx'
 import Media from '../../../loader/Loader.js'
 import '../../../component/topbar/Topbar.css'
 import {useSelector} from 'react-redux'
 const Homeprofile = () => {
 
-    const [search,setsearch] =useState("");
-    const menu=useRef();
-      
-    const [placeholder, setplaceholder] = useState("..");
-    
     const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
   
     const {currentUser,isFetching} = useSelector((state)=>state.user)
     const user=currentUser
        
-    
       const logouthandler=()=>{
         console.log("logout")
         localStorage.clear();
