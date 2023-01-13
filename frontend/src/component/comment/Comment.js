@@ -1,22 +1,18 @@
-import React, { useContext,useRef} from 'react';
+import React, {useRef} from 'react';
 import './Comment.css';
-import {Link, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CommentBox from './CommentBox';
-import axios from 'axios';
-import {Spinner} from 'react-bootstrap';
- 
+import {publicRequest} from '../../requestMethods'
+import Loader from '../../loader/Loader';
+import {useSelector} from 'react-redux'
 import {
   ArrowForward,
 } from "@material-ui/icons";
-import { AuthContext } from '../../context/AuthContext';
+
 const Comment = () => {
 
-
-  
-const audio= new Audio();
-audio.src = "/music/comment.wav";
-  const {user}=useContext(AuthContext);
+  const {currentUser:user}=useSelector((state)=>state.user)
   const {notesid}=useParams();
   const [commenttext,setcommenttext] =useState();
   const [allcomment,setallcomment] =useState([]);
@@ -26,7 +22,7 @@ audio.src = "/music/comment.wav";
   useEffect(()=>{
     const fetchComment =async(req,res)=>{
      try{
-        const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/comments/" + notesid)
+        const res = await publicRequest.get("comments/" + notesid)
         setallcomment(res.data)
         setisfetchcomment(true);
      }
@@ -43,16 +39,14 @@ audio.src = "/music/comment.wav";
 
   const CommentHandler = async(e)=>{
         e.preventDefault();
-        audio.play();
         try {
-           const res= await axios.post("https://notesharingbackend-ankitkr437.onrender.com/api/comments/" + notesid, { 
+           const res= await publicRequest.post("comments/" + notesid, { 
                 userId:user._id,
                 text:commenttext,
              });
             setallcomment([...allcomment,res.data])
             setcommenttext("")
-          } catch (err) {}
-          console.log("ajjkk")
+          } catch (err) {console.log(err)}
       }
      
     
@@ -68,7 +62,7 @@ audio.src = "/music/comment.wav";
                 </div>
             )
           })
-          :<Spinner animation="grow"  style={{width:"20vw",height:"10vw",marginTop:"30vh",color:"yellowgreen",marginLeft:"10vw"}}/>
+          :<Loader />
         }
        </div>
         <form className="comment-form" onSubmit={CommentHandler}>

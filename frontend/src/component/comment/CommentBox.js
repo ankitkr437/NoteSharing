@@ -1,8 +1,7 @@
- import React, { useContext,useEffect,useState } from 'react';
-
-import axios from 'axios';
+import React, {useEffect,useState } from 'react';
+import { publicRequest } from '../../requestMethods';
  import './CommentBox.css';
- import {Link, useParams } from "react-router-dom";
+ import {Link} from "react-router-dom";
   
  const CommentBox = ({userinfo,text}) => {
 
@@ -11,12 +10,10 @@ import axios from 'axios';
   const [isfetchuser,setisfetchuser]=useState(false)
   useEffect(()=>{
     const fetchuser = async ()=>{
-     const res= await axios.get(`https://notesharingbackend-ankitkr437.onrender.com/api/users/${userinfo}`);
-   
+     const res= await publicRequest.get(`users/${userinfo}`);
      setuser(res.data);
      setisfetchuser(true);
     }
-    
     fetchuser();
   },[])
    

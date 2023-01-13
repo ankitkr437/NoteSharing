@@ -120,32 +120,26 @@ router.get("/profile/:userId", async (req, res) => {
   }
 });
 
-//get all notes
+//GET all featured authors
 router.get("/", async (req, res) => {
   try {
-    const data =await Note.find();
-    res.status(200).json(data);
+     let users = await User.find();
+     const arr=[];
+     const featuredAuthors = await Promise.all(
+      users.map((user) => {
+        const x= Note.findOne({userId:user._id});
+         
+        arr.push(user)
+        arr.push(x);
+        return x;
+      })
+      );
+    res.status(200).json(arr);
   } catch (err) {
-    res.status(404).json(err);
+    res.status(500).json(err);
   }
 });
 
-// add a comment
-
-
-// router.put("/:id/comment", async (req, res) => {
-//   try {
-//     const note = await Note.findById(req.params.id);
-//      const x= await note.updateOne({ $push: { comments: {text:req.body.text,
-//       commentedBy:req.body.commentedBy}} });
-//       res.status(200).json(x.comments);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
- 
- 
  
 export default router;
 
