@@ -4,7 +4,6 @@ import { useState, useEffect,useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import {Spinner} from 'react-bootstrap';
 const HomeMessageBox = ({conversationspeople,receiverauthor,currentuser}) => {
 
   const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
