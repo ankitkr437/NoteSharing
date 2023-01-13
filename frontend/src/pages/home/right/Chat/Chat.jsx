@@ -12,6 +12,7 @@ import OnlineAuthor from "../OnlineAuthor/OnlineAuthor.jsx";
 import HomepageMessage from "../HomepageMessageBox/HomepageMessage";
 import { io } from "socket.io-client";
 import { useSelector } from "react-redux";
+import Topbar from "../../../../component/topbar/Topbar";
 
 const Chat = () => {
   const [messages, setmessages] = useState([]);
@@ -144,7 +145,7 @@ const Chat = () => {
   // console.log(currentchatId)
   return (
     <>
-    
+      <Topbar />
       <div className="chat-1">
         <div className="chat-1-search" ref={pastConversation}>
           {user && isfetchconversationspeople && (

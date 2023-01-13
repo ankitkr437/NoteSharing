@@ -19,14 +19,14 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  ${mobile({paddingTop:"26vh" })}
+  ${mobile({paddingTop:"12vh" })}
 `;
 const TitleNav=styled.h1`
   font-size: 45px;
   font-weight: 200;
   text-align: center;
-  margin-bottom: 0vh;
-  ${mobile({textAlign:"center",fontSize:"35px"})}
+  margin-bottom: 3vh;
+  ${mobile({textAlign:"center",fontSize:"35px",marginBottom:"1vh"})}
 `
 const Wrapper = styled.div`
 

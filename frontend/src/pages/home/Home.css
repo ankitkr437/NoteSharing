@@ -29,6 +29,9 @@
     margin-left: 3vh;
 }
 @media only screen and (max-width: 768px) {
+    .home-container{
+        padding: 10px 10px;
+    }
     .main{
         display: block;
     }

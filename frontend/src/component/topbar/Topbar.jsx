@@ -11,7 +11,7 @@ import {publicRequest} from'../../requestMethods'
 import {useSelector,useDispatch} from 'react-redux'
 import {logout,search} from "../../redux/userRedux";
 const Topbar = () => {
-  const {curreUser:user} =useSelector((state)=>state.user)
+  const {curreUser:user,searchedValue} =useSelector((state)=>state.user)
   const [searchedItem,setsearch] =useState("");
   const menu=useRef();
   const [placeholder, setplaceholder] = useState("..");
@@ -32,12 +32,12 @@ const Topbar = () => {
 
    const searchsubmit=(e)=>{
     e.preventDefault();
-    search(searchedItem);
+    dispatch(search(searchedItem));
    }
    useEffect(()=>{
     dispatch(search(null));
   },[])
-
+  
   return (
     <>
       <div className="topbar">

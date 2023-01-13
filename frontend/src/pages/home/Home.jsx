@@ -11,6 +11,7 @@ const Home = () => {
 
     return (
         <>
+        <Topbar />
         <div className='home-container'>
         <div className='home-top'>
         <UploadNote/>

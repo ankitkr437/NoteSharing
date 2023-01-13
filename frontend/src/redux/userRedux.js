@@ -41,14 +41,13 @@ const userSlice = createSlice({
     },
     follow:(state,action)=>{
       
-        state.currentUser.followings=[...state.currentUser.followings, action.payload];
-        console.log(state.currentUser)
+        state.currentUser.followings=[...state.currentUser.followings, action.payload]
     },
     unFollow:(state,action)=>{
     
       state.currentUser.followings= state.currentUser.followings.filter(
               (following) => following !== action.payload);
-              console.log(state.currentUser)      
+        
     }
   },
 });

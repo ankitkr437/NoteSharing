@@ -3,7 +3,6 @@ import { Route,Routes, Switch ,Navigate} from "react-router-dom";
 import Login from './pages/login/Login';
 import Regiser from './pages/register/Register';
 import Home from './pages/home/Home';
-import Topbar from './component/topbar/Topbar';
 import Profile from './pages/profile/Profile';
 import UpdateUser from "./component/updateUser/UpdateUser";
 import Comment from '../src/component/comment/Comment';
@@ -16,7 +15,6 @@ function App() {
 
   return (
     <>
-    <Topbar />
     <Routes>
      <Route path="/"  exact element={currentUser?<Home />:<Regiser />} />
      <Route path="/login"  element={currentUser?<Navigate to="/" />:<Login />} />

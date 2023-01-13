@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import {useSelector} from 'react-redux'
 import "./UploadNoteForm.css";
+import Topbar from "../topbar/Topbar";
 const UploadNote = () => {
   const {currentUser } = useSelector((state)=>state.user)
   const user=currentUser

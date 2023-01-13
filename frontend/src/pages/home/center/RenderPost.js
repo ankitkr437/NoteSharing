@@ -22,7 +22,9 @@ const RenderPost = () => {
   const [notes, setnotes] = useState([]);
   const [isnotes, setisnotes] = useState(false);
 
-  const {currentUser:user,searchedValue} = useSelector((state)=>state.user)
+  const {currentUser,searchedValue} = useSelector((state)=>state.user)
+  const issearched=searchedValue
+  const user=currentUser
   useEffect(() => {
     const fetchallusers = async () => {
       const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/users/");
@@ -39,22 +41,27 @@ const RenderPost = () => {
 
     fetchallnotes();
     fetchallusers();
+
   }, [user._id])
  
  
-   const filterdnotes = (isnotes && searchedValue) && notes.filter(x =>
+   const filterdnotes = (isnotes && issearched) && notes.filter(x =>
     x.notename && x.notename.toLowerCase().includes(searchedValue &&searchedValue.toLowerCase()) 
  );
   
-    if(!isnotes || !isfetchusers) return (
+  if(!isnotes || !isfetchusers) return (
       <>
         <Media />
       </>
-      )
-  console.log(notes)
+    )
+    if(issearched && !filterdnotes.length) return (
+      <>
+        <h4 style={{textAlign:"center"}}>Not Found</h4>
+      </>
+    )
   return (
     <>
-      { (searchedValue) ? filterdnotes.map((p, i) => (
+      { (issearched && !(searchedValue==="")) ? filterdnotes.map((p, i) => (
         <HomePost x={p} key={i} />
       ))
       :notes.map((p, i) => (
@@ -64,4 +71,5 @@ const RenderPost = () => {
     </>
   );
 };
+
 export default RenderPost;

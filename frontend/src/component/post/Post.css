@@ -36,9 +36,13 @@
 }
 .post-topbar-desc{
     margin-left: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .post-topbar-follow-ago-container{
     display: flex;
+    justify-content: space-between;
 }
 .post-topbar-follow-ago-container p{
     font-size: 12px;
@@ -177,6 +181,9 @@
     }
     .post-topbar-desc{
         margin-left: 1vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
     }
     .post-topbar{
         height: 9vh;

@@ -4,7 +4,7 @@ import Post from '../../component/post/Post'
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Spinner } from 'react-bootstrap';
+import Topbar from "../../component/topbar/Topbar";
 import {
   Add, Remove
 } from "@material-ui/icons";
@@ -63,6 +63,7 @@ const Profile = () => {
   
   return (
     <>
+    <Topbar />
       {
         user && user.username ? (
           <div className="profile-container">
@@ -138,7 +139,7 @@ const Profile = () => {
                 )}
                </div>
               
-              <div className="contributions-pc">
+              <div className="contributions">
               < div className="gain-container">
                  <div className="total-gain">
                  <img src="/image/icons8-microsoft-publisher-50.png" /> 
@@ -148,48 +149,25 @@ const Profile = () => {
                 </div>
 
                 <div className="gain-container">
-                <img src="/image/icons8-like-64.png" /> 
+                
                  <div className="total-gain">
+                 <img src="/image/icons8-like-64.png" /> 
                  <p className="gain-value">{post && totallikes}</p>
-                 <p className="gain-desc">Total likes</p>
                  </div>
+                 <p className="gain-desc">Total likes</p>
                 </div>
 
                 <div className="gain-container">
-                <img src="/image/icons8-view-50.png" /> 
                  <div className="total-gain">
+                 <img src="/image/icons8-view-50.png" /> 
                  <p className="gain-value">{post && totalviews}</p>
-                 <p className="gain-desc">Total views</p>
                  </div>
+                 <p className="gain-desc">Total views</p>
                 </div>
               </div>
               </div>         
             </div>
-            <div className="contributions-phone">
-            <div className="gain-container">
-                  <img src="/image/icons8-microsoft-publisher-50.png" /> 
-                 <div className="total-gain">
-                 <p className="gain-value">{post && post.length}</p>
-                 <p className="gain-desc">Published Notes</p>
-                 </div>
-                </div>
-
-                <div className="gain-container">
-                <img src="/image/icons8-like-64.png" /> 
-                 <div className="total-gain">
-                 <p className="gain-value">{post && totallikes}</p>
-                 <p className="gain-desc">Total likes</p>
-                 </div>
-                </div>
-
-                <div className="gain-container">
-                <img src="/image/icons8-view-50.png" /> 
-                 <div className="total-gain">
-                 <p className="gain-value">{post && totalviews}</p>
-                 <p className="gain-desc">Total views</p>
-                 </div>
-                </div>
-            </div>
+           
             <div className="user-timeline">
               <div className="user-post-profile">
                 {
