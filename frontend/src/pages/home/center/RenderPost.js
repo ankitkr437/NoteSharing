@@ -1,73 +1,113 @@
 import React, { useContext } from "react";
 import HomePost from "./Homepost.js";
-import { Link } from "react-router-dom";
-import axios from 'axios';
-import { useState,useEffect} from "react";
-import { format } from 'timeago.js';
-import {
-  Search,
-} from "@material-ui/icons";
-import { Skeleton } from "@material-ui/lab";
+import styled from "styled-components";
+import axios from "axios";
+import { Search } from "@material-ui/icons";
+import { useState, useEffect } from "react";
+import { search } from "../../../redux/userRedux";
+import { useSelector, useDispatch } from "react-redux";
+import { mobile } from "../../../responsive";
 import Media from "../../../loader/Loader.js";
-import {useSelector} from 'react-redux'
+
+const Container = styled.div`
+  padding: 20px;
+  ${mobile({ padding: "0px" })}
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+  ${mobile({ marginTop: "1vh"})}
+`;
+const SearchContainer = styled.form`
+  border: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  ${mobile({ width: "80%" })}
+`;
+
+const Input = styled.input`
+  border: none;
+  outline: none;
+  width: 500px;
+  height: 40px;
+  font-size: 16px;
+  ${mobile({ height: "30px" })}
+  padding: 5px;
+`;
+const SearchButton = styled.button`
+  border: none;
+  outline: none;
+  background-color: white;
+`;
+
 const RenderPost = () => {
-
-
+  const { currentUser, searchedValue } = useSelector((state) => state.user);
   const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
-
-  const [users, setusers] = useState([]);
-  const [isfetchusers, setisfetchusers] = useState(false)
-  const [isfetchtimeline, setisfetchtimeline] = useState(false)
-  const [timeline, settimeline] = useState([])
   const [notes, setnotes] = useState([]);
   const [isnotes, setisnotes] = useState(false);
-
-  const {currentUser,searchedValue} = useSelector((state)=>state.user)
-  const issearched=searchedValue
-  const user=currentUser
+  const [searchedItem, setsearchedItem] = useState(searchedValue);
+  const dispatch = useDispatch();
+  const issearched = searchedValue;
+  const user = currentUser;
   useEffect(() => {
-    const fetchallusers = async () => {
-      const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/users/");
-      setusers(res.data);
-      setisfetchusers(true)
-    }
     const fetchallnotes = async () => {
-      const res = await axios.get("https://notesharingbackend-ankitkr437.onrender.com/api/notes/");
-      setnotes(res.data.sort((n1, n2) => {
-        return new Date(n2.createdAt) - new Date(n1.createdAt)
-      }));
+      const res = await axios.get(
+        "https://notesharingbackend-ankitkr437.onrender.com/api/notes/"
+      );
+      setnotes(
+        res.data.sort((n1, n2) => {
+          return new Date(n2.createdAt) - new Date(n1.createdAt);
+        })
+      );
       setisnotes(true);
-    }
-
+    };
     fetchallnotes();
-    fetchallusers();
+  }, [user._id]);
 
-  }, [user._id])
- 
- 
-   const filterdnotes = (isnotes && issearched) && notes.filter(x =>
-    x.notename && x.notename.toLowerCase().includes(searchedValue &&searchedValue.toLowerCase()) 
- );
-  
-  if(!isnotes || !isfetchusers) return (
-      <>
-        <Media />
-      </>
-    )
-    if(issearched && !filterdnotes.length) return (
-      <>
-        <h4 style={{textAlign:"center"}}>Not Found</h4>
-      </>
-    )
+  const filterdnotes =
+    isnotes &&
+    issearched &&
+    notes.filter(
+      (x) =>
+        x.notename &&
+        x.notename
+          .toLowerCase()
+          .includes(searchedValue && searchedValue.toLowerCase())
+    );
+  const searchHandler = (e) => {
+    e.preventDefault();
+    dispatch(search(searchedItem));
+  };
+  useEffect(() => {
+    dispatch(search(null));
+  }, []);
+  if (!isnotes) return <Media />;
   return (
     <>
-      { (issearched && !(searchedValue==="")) ? filterdnotes.map((p, i) => (
-        <HomePost x={p} key={i} />
-      ))
-      :notes.map((p, i) => (
-        <HomePost x={p} key={i} />
-      ))
-    }
+      <Wrapper>
+        <SearchContainer onSubmit={searchHandler}>
+          <Input
+            placeholder="Search notes..."
+            onChange={(e) => setsearchedItem(e.target.value)}
+          />
+          <SearchButton type="submit">
+            <Search style={{ color: "gray", fontSize: 30 }} />
+          </SearchButton>
+        </SearchContainer>
+      </Wrapper>
+      {issearched && !filterdnotes.length ? (
+        <h4 style={{ textAlign: "center" }}>Not Found</h4>
+      ) : issearched && !(searchedValue === "") ? (
+        filterdnotes.map((p, i) => <HomePost x={p} key={i} />)
+      ) : (
+        notes.map((p, i) => <HomePost x={p} key={i} />)
+      )}
     </>
   );
 };

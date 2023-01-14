@@ -6,7 +6,7 @@ import axios from "axios";
 import { publicRequest } from "../../requestMethods";
 import {useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Topbar from "../topbar/Topbar";
+import Navbar from '../Navbar'
 function UpdatePost() {
   const { notesid } = useParams();
   const { currentUser: user } = useSelector((state) => state.user);
@@ -45,7 +45,7 @@ function UpdatePost() {
   };
   return (
     <>
-    <Topbar />
+    <Navbar />
       <div className="Update-post-container-complete">
         <div className="Update-post-container">
           <p className="Update-post-container-name">Update your note</p>

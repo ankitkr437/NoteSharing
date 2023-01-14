@@ -1,10 +1,9 @@
-import React, { useContext, useRef } from "react";
+import React, {useRef } from "react";
 import "./UploadNote.css";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import axios from "axios";
 import {useSelector} from 'react-redux'
 import "./UploadNoteForm.css";
-import Topbar from "../topbar/Topbar";
 const UploadNote = () => {
   const {currentUser } = useSelector((state)=>state.user)
   const user=currentUser

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { publicRequest } from "../../requestMethods";
 import { useSelector } from "react-redux";
-import Topbar from "../topbar/Topbar";
+import Navbar from '../Navbar';
 const UpdateUser = () => {
   const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
   const { currentUser: user } = useSelector((state) => state.user);
@@ -56,7 +56,7 @@ const UpdateUser = () => {
 
   return (
     <>
-      <Topbar />
+      <Navbar />
       <div className="Update-container">
         <div className="Update-profile-container">
           <div className="Update-profile-container-left">

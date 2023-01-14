@@ -12,8 +12,6 @@
 }
 .leftmost-topbar{
     display: flex;
-    /* border-top-left-radius: 20px;
-    border-top-right-radius: 20px; */
     border-radius: 20px;
     padding-top: 2vh;
     flex-direction: column;
@@ -34,8 +32,11 @@
   font-weight: 600;
 }
 
-.setting{
+.menuItem{
     display: flex;
+    justify-content: center;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 .leftmost-links{
     font-size: 17px;
@@ -55,7 +56,39 @@
 }
 .contact-upper p{
     text-align: center;
+    color: black;
 }
-.profile-update-menu{
+
+.logout{
     margin-left: 0;
+    display: flex;
+    justify-content: center;
 }
+.leftmost-desc{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+@media only screen and (max-width: 768px) {
+     .leftmost-topbar{
+        width: 30vh;
+     }
+     .menuItem{
+        margin-top: 2vh;
+        margin-bottom: 1vh;
+     }
+     .contact-upper p{
+        text-align: center;
+        margin-top: 1vh;
+        font-size: 15px;
+        margin-bottom: 1vh;
+    }
+    .contact-text a{
+        color: black;
+        margin-top: 2vh;
+        margin-left: 1vh;
+        margin-right: 1vh;
+    }
+}
+ 

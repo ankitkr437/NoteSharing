@@ -7,7 +7,7 @@
   width: 100%;
   padding-left: 10vw;
   padding-right: 10vw;
-  padding-top: 14vh;
+  padding-top: 4vh;
 }
 .profile-top {
   display: flex;
@@ -47,6 +47,7 @@
 }
 .institution-container {
   display: flex;
+  margin-top: 1vh;
 }
 .institution-container img {
   height: 15px;
@@ -64,6 +65,7 @@
 .user-resident {
   display: flex;
   line-height: 17px;
+  margin-top: 1vh;
 }
 .user-resident img {
   height: 12px;
@@ -80,6 +82,7 @@
 
 .followers-followings {
   display: flex;
+  margin-top: 1vh;
 }
 .followers-followings p {
   line-height: 17px;
@@ -164,7 +167,7 @@
   display: flex;
   border: 1px solid brown;
   padding: 1vh 1vh;
-  background-color: rgb(44, 136, 241);
+  background-color: #3E8DE3;
   align-items: center;
   justify-content: space-evenly;
   margin-bottom: 2vh;
@@ -202,7 +205,6 @@
     width: 100%;
     padding-left: 3vw;
     padding-right: 3vw;
-    padding-top: 14vh;
   }
   .profile-top-img-container img {
     width: 10vh;

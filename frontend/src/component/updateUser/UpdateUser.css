@@ -5,7 +5,7 @@
 }
 .Update-container {
   display: flex;
-  padding-top: 15vh;
+  padding-top: 2vh;
   align-items: center;
   justify-content: center;
 }
@@ -101,19 +101,21 @@
 }
 
 .Update-profile-container-right-form-submit {
-  height: 6vh;
-  width: 95%;
-  background-color: rgb(86, 78, 158);
+  background-color:  #3E8DE3;
   color: white;
   border: 1px solid grey;
   border-radius: 10px;
-  font-size: 23px;
+  font-size: 20px;
+  font-weight: 300;
+   width: 25%;
+  padding: 2vh;
+  cursor: pointer;
 }
 .Update-profile-container-right-form-submit:active {
   font-size: 26px;
 }
 .Update-profile-container-right-form-submit {
-  background-color: #8190b5;
+  background-color:  #3E8DE3;
   box-shadow: 0 6px 13px grey;
   font-size: 22px;
 }
@@ -141,9 +143,9 @@
     height: 5vh;
   }
   .Update-profile-container-right-form-submit {
-    background-color: #5985f3;
-    box-shadow: 0 6px 13px grey;
-    font-size: 16px;
+    font-size: 15px;
+    padding: 2vh;
+    width: 40%;
   }
   #input-bloack-file {
     font-size: 12px;

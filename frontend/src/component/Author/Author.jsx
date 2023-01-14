@@ -1,11 +1,9 @@
 import React, { Component, createContext } from "react";
- 
 import "./Author.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import {publicRequest} from '../../requestMethods'
-
+import CircularLoader from '../CircularLoader'
 const Author = () => {
   const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
   const [users, setusers] = useState([]);
@@ -52,10 +50,12 @@ const Author = () => {
       return b.length - a.length;
     });
   }
-   console.log(showauthor)
   return (
     <>
+      
       <p className="featured-author">Featured Authors</p>
+      {!(isnotes && isuser)?
+      <CircularLoader item={"featured author"}/>:
       <div className="author-container">
         {isnotes &&
           isuser &&
@@ -105,6 +105,7 @@ const Author = () => {
             }
           })}
       </div>
+     }
     </>
   );
 };

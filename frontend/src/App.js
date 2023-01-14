@@ -20,7 +20,7 @@ function App() {
      <Route path="/login"  element={currentUser?<Navigate to="/" />:<Login />} />
      <Route path="/register"  element={currentUser?<Navigate to="/" />:<Regiser />} />
      <Route path="/message" element={<Chat />} />
-     <Route path="/message/:currentchatId" element={<Chat />} />
+     <Route path="/chat/:currentchatId" element={<Chat />} />
      <Route path="/messageauthor" element={<HomepageMessage />} />
      <Route path="/profile/:userId"   element={<Profile />} />
      <Route path="/profile/update"   element={<UpdateUser />} />

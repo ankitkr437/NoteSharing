@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux'
 import {
   ArrowForward,
 } from "@material-ui/icons";
-
+import Navbar from '../Navbar';
 const Comment = () => {
 
   const {currentUser:user}=useSelector((state)=>state.user)
@@ -51,6 +51,7 @@ const Comment = () => {
      
     
   return <>
+  <Navbar />
   <div className='comment-container'>
      
         <div className='comment-info-container'>

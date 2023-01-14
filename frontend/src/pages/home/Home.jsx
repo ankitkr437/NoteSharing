@@ -6,12 +6,13 @@ import RenderPost from './center/RenderPost.js';
 import Homeprofile from './left/Homeprofile.jsx';
 import './Home.css';
 import UploadNote from '../../component/uploadNote/UploadNote'
+import Navbar from '../../component/Navbar';
 const Home = () => {
    
 
     return (
         <>
-        <Topbar />
+        <Navbar />
         <div className='home-container'>
         <div className='home-top'>
         <UploadNote/>

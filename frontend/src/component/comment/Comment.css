@@ -5,14 +5,13 @@
 }
 
 .comment-container{
-    padding-top: 12vh;
+    padding-top: 1vh;
     display: flex;
     height: 100vh;
     padding: 2vh 0vw;
 }
 .comment-info-container{
     overflow-y: scroll;
-    padding: 9vh 4vw;
 }
 .comment-info-container::-webkit-scrollbar {
     width: 7px;               /* width of the entire scrollbar */
@@ -29,8 +28,7 @@
   }
 .comment-form{
     display: flex;
-    /* since there is a 2 vw padding ffrom left right */
-     width: 95vw;
+     width: 100vw;
      height: 8vh;
      position: fixed;
      bottom: 0;

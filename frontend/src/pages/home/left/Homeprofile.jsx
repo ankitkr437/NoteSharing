@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Media from '../../../loader/Loader.js'
 import '../../../component/topbar/Topbar.css'
-import {useSelector} from 'react-redux'
+import {useSelector} from 'react-redux';
+import { Chat,AccountCircle, ExitToApp,Settings,Home} from "@material-ui/icons";
 const Homeprofile = () => {
 
     const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
@@ -27,27 +28,40 @@ const Homeprofile = () => {
 
      <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none" }} className="topbar-img-username">
             <img src={(user && user.profilePicture)?user.profilePicture:pf +"DefaultPic.png"} className="topbar-menu-Img" />
-          <p className="menu-username">{user&&user.username}</p>
+          <p className="menu-username">{user?.username}</p>
           </Link>
       <hr />
      </div>
      
     <div className="leftmost-desc">
 
-        <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none" }} className="profile-link-icons">
-      <p  className="leftmost-links">View Profile</p>      
+     <Link to={`/`} style={{ textDecoration: "none" }} className="profile-link-icons">
+      <div className="menuItem">
+      <Home />
+      <p className="leftmost-links">Home</p> 
+      </div>     
      </Link>
-       <Link to={`/profile/update`} style={{textDecoration:"none"}} className="profile-link-icons" >
-        <div className="setting">
-          <p className="leftmost-links">Setting</p>
-          <img src="https://img.icons8.com/ios/30/000000/settings--v2.png" className="topbar-setting"/>
-          </div>
+      <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none" }} className="profile-link-icons">
+      <div className="menuItem">
+      <AccountCircle />
+      <p className="leftmost-links">View Profile</p> 
+      </div>     
+     </Link>
+     <Link to={`/profile/chat`} style={{textDecoration:"none"}} className="profile-link-icons" >
+        <div className="menuItem">
+           <Chat style={{color:"rgb(43, 68, 97)"}}/>
+           <p className="leftmost-links">Chat</p>
+        </div>
       </Link>
-        <div className="profile-update-menu" id="topbar-logout" onClick={logouthandler}>
-         <p className="leftmost-links">Logout</p>
-         <img src="https://img.icons8.com/external-sbts2018-blue-sbts2018/38/000000/external-logout-social-media-basic-1-sbts2018-blue-sbts2018.png"
-         className="topbar-setting"
-         />
+       <Link to={`/profile/update`} style={{textDecoration:"none"}} className="profile-link-icons" >
+        <div className="menuItem">
+           <Settings />
+           <p className="leftmost-links">Setting</p>
+        </div>
+      </Link>
+        <div className="menuItem" id="topbar-logout" onClick={logouthandler}>
+           <ExitToApp />
+           <p className="leftmost-links">Logout</p>
           </div> 
         </div>
           <div className='footer-complete-container'> 

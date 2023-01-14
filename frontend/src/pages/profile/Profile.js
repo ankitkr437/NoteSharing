@@ -4,14 +4,14 @@ import Post from '../../component/post/Post'
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Topbar from "../../component/topbar/Topbar";
+import Navbar from "../../component/Navbar";
 import {
   Add, Remove
 } from "@material-ui/icons";
 import { publicRequest } from "../../requestMethods";
 import { useDispatch, useSelector } from "react-redux";
 import {follow,unFollow} from "../../redux/userRedux";
-import Loader from '../../loader/Loader'
+import CircularLoader from '../../component/CircularLoader'
 const Profile = () => {
 
   const { userId } = useParams();
@@ -63,7 +63,7 @@ const Profile = () => {
   
   return (
     <>
-    <Topbar />
+    <Navbar />
       {
         user && user.username ? (
           <div className="profile-container">
@@ -76,22 +76,13 @@ const Profile = () => {
               </div>
               <div className="profile-desc">
               { (currentuser._id===userId || (user.firstname&& user.lastname)) && <p className="fullname">
-                {( user.firstname && user.lastname)?
-                  (user.firstname + " " + user.lastname):
-                  (currentuser._id===userId &&
-                  <Link to={`/profile/update`}>
-                    Fill your fullname
-                  </Link>)
+                {( user.firstname && user.lastname)&&
+                  (user.firstname + " " + user.lastname)
                 }
                   </p>
                }{(currentuser._id===userId || user.desc) &&
                 <p className="desc">{
-                   (user.desc)?
-                   user.desc:
-                    currentuser._id===userId &&
-                    <Link to={`/profile/update`}>
-                      Fill your headline
-                    </Link>
+                   user?.desc
                 }</p>
               }
               {(currentuser._id===userId || user.institution) &&
@@ -100,12 +91,8 @@ const Profile = () => {
                   <img src="https://img.icons8.com/external-fauzidea-glyph-fauzidea/64/undefined/external-college-building-fauzidea-glyph-fauzidea.png" />
                 }
                   <p className="institution">
-                     {( user.institution)?
-                     user && user.institution:
-                     (currentuser._id===userId &&
-                      <Link to={`/profile/update`}>
-                        Fill your institution
-                      </Link>)
+                     {( user.institution)&&
+                     user && user.institution
                     }</p>
                 </div>}
                 {(currentuser._id===userId || (user.city && user.country)) &&
@@ -114,13 +101,8 @@ const Profile = () => {
                   <img src="https://img.icons8.com/ios-filled/50/undefined/marker.png" />
                 }
                   <p className="residing-second">{
-                    ( user.city && user.country)?
-                  user.city + "," +user.country:(
-                    currentuser._id===userId &&
-                    <Link to={`/profile/update`}>
-                        Fill your resident
-                      </Link>
-                  )
+                    ( user.city && user.country)&&
+                  user.city + "," +user.country
                   }</p>
                 </div>}
                 <div className="followers-followings">
@@ -183,10 +165,7 @@ const Profile = () => {
         )
         :
         <div style={{paddingTop:"20vh"}}>
-        <Loader />
-        <h4 style={{textAlign:"center"}}>
-          Fetching...
-        </h4>
+        <CircularLoader item={"User"}/>
         </div>
       }
 
