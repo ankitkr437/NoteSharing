@@ -1,6 +1,8 @@
 const  express = require('express');
+const  dotenv = require('dotenv');
 const app=express();
-const port=process.env.PORT
+dotenv.config();
+const port=process.env.PORT;
 const io = require("socket.io")(port, {
   cors: {
     origin: "https://notesharing.onrender.com/",
@@ -50,5 +52,5 @@ io.on("connection", (socket) => {
   });
 });
 app.get("/",(req,res)=>{
-  res.send("socket server for Notesharing"); 
+  res.send("socket server for Notesharing"+"running on "+{port}); 
 })
