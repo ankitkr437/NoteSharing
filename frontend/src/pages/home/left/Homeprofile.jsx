@@ -47,7 +47,7 @@ const Homeprofile = () => {
       <p className="leftmost-links">View Profile</p> 
       </div>     
      </Link>
-     <Link to={`/profile/chat`} style={{textDecoration:"none"}} className="profile-link-icons" >
+     <Link to={`/messenger`} style={{textDecoration:"none"}} className="profile-link-icons" >
         <div className="menuItem">
            <Chat style={{color:"rgb(43, 68, 97)"}}/>
            <p className="leftmost-links">Chat</p>

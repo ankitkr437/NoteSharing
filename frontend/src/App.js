@@ -7,21 +7,18 @@ import Profile from './pages/profile/Profile';
 import UpdateUser from "./component/updateUser/UpdateUser";
 import Comment from '../src/component/comment/Comment';
 import UpdatePost from "./component/updatepost/UpdatePost";
-import Chat from "./pages/home/right/Chat/Chat.jsx";
-import HomepageMessage from "./pages/home/right/HomepageMessageBox/HomepageMessage";
+import Messenger from "./pages/messenger/messenger";
 import {useSelector} from 'react-redux'
 function App() {
-  const {currentUser}=useSelector((state)=>state.user)
+  const {currentUser:user}=useSelector((state)=>state.user)
 
   return (
     <>
     <Routes>
-     <Route path="/"  exact element={currentUser?<Home />:<Regiser />} />
-     <Route path="/login"  element={currentUser?<Navigate to="/" />:<Login />} />
-     <Route path="/register"  element={currentUser?<Navigate to="/" />:<Regiser />} />
-     <Route path="/message" element={<Chat />} />
-     <Route path="/chat/:currentchatId" element={<Chat />} />
-     <Route path="/messageauthor" element={<HomepageMessage />} />
+     <Route path="/"  exact element={user?<Home />:<Regiser />} />
+     <Route path="/login"  element={user?<Navigate to="/" />:<Login />} />
+     <Route path="/register"  element={user?<Navigate to="/" />:<Regiser />} />
+     <Route path="/messenger" element={!user ? <Navigate to="/" /> : <Messenger />} />
      <Route path="/profile/:userId"   element={<Profile />} />
      <Route path="/profile/update"   element={<UpdateUser />} />
      <Route path="/note/update/:notesid"   element={<UpdatePost />} />
