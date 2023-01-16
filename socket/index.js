@@ -1,13 +1,13 @@
-const  express = require('express');
-const  dotenv = require('dotenv');
-const app=express();
-dotenv.config();
-const port=process.env.PORT;
-const io = require("socket.io")(port, {
-  cors: {
-    origin: "https://notesharing.onrender.com/",
-  },
-});
+const http = require('http');
+const express = require('express');
+const cors = require('cors');
+const router = require('./router');
+const app = express();
+const server = http.createServer(app);
+
+app.use(router);
+
+const io = require("socket.io")(server,{ cors: { origin: '*' } });
 
 let users = [];
 
@@ -51,6 +51,5 @@ io.on("connection", (socket) => {
     io.emit("getUsers", users);
   });
 });
-app.get("/",(req,res)=>{
-  res.send("socket server for Notesharing"+"running on "+{port}); 
-})
+ 
+server.listen(process.env.PORT || 8900, () => console.log(`Server has started.`));
