@@ -42,64 +42,13 @@ app.use(cors({
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
-
-const router = express.Router();
-// const __dirname = path.resolve();
-
-
-// app.use("/images", express.static(path.join(__dirname, "public/images"), {
-//   setHeaders: function(res, path) {
-//     res.set("Cross-Origin-Resource-Policy","cross-origin");
-//     res.set("Content-Security-Policy",`frame-ancestors  ${seturl2}`);
-    
-//   }
-// }));
-// app.use("/notepdf", express.static(path.join(__dirname, "public/images/notepdfs"), {
-//   setHeaders: function(res, path) {
-//     res.set("Cross-Origin-Resource-Policy","cross-origin");
-//     res.set("Content-Security-Policy",`frame-ancestors  ${seturl2}`);
-     
-//     }
-// }));
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//       cb(null, "public/images");
-//     },
-//     filename: (req, file, cb) => {
-//       cb(null, req.body.name);
-//     },
-//   });
-  
-//   const upload = multer({ storage: storage });
-//   app.post("/api/upload/", upload.single("file"), (req, res) => {
-     
-//     try {
-//       return res.status(200).json("File uploded successfully");
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   });
-
-
-//   const storagepdf = multer.diskStorage({
-//     destination: (req, pdffile, cb) => {
-//       cb(null, "public/images/notepdfs");
-//     },
-//     filename: (req, pdffile, cb) => {
-//       cb(null, req.body.pdfname);
-//     },
-//   });
-  
-//   const uploadpdf = multer({ storage: storagepdf });
-//   app.post("/api/upload/pdf", uploadpdf.single("pdffile"), (req, res) => {
-     
-//     try {
-//       return res.status(200).json("File uploded successfully");
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   });
-
+ 
+const __dirname = path.resolve();
+app.use("/images", express.static(path.join(__dirname, "public/images"), {
+  setHeaders: function(res, path) {
+    res.set("Cross-Origin-Resource-Policy","cross-origin");
+  }
+}));
 
 app.use('/api/users',useRoute);
 app.use('/api/auth',authRoute);
