@@ -130,6 +130,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+//find a note by some name
+router.get("/findnotes/:keyword", async (req, res) => {
+  
+  try {
+    const data =await Note.find({$or:[{'desc' : new RegExp(req.params.keyword, 'i')},{'notename' : new RegExp(req.params.keyword, 'i')}]});
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(404).json(err);
+  }
+});
+
 export default router;
 
 

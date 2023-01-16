@@ -24,8 +24,8 @@ const URL=process.env.URL;
 connection(URL);
 
  
-const seturl="http://localhost:3000";
-const seturl2="https://handnote.netlify.app/"
+// const seturl="http://localhost:3000";
+// const seturl2="https://handnote.netlify.app/"
  
 app.use(cors({
   origin:"*",
@@ -34,71 +34,71 @@ app.use(cors({
   exposedHeaders:['sessionId'],
   preflightContinue:false
 }));
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
 const router = express.Router();
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 
-app.use("/images", express.static(path.join(__dirname, "public/images"), {
-  setHeaders: function(res, path) {
-    res.set("Cross-Origin-Resource-Policy","cross-origin");
-    res.set("Content-Security-Policy",`frame-ancestors  ${seturl2}`);
+// app.use("/images", express.static(path.join(__dirname, "public/images"), {
+//   setHeaders: function(res, path) {
+//     res.set("Cross-Origin-Resource-Policy","cross-origin");
+//     res.set("Content-Security-Policy",`frame-ancestors  ${seturl2}`);
     
-  }
-}));
-app.use("/notepdf", express.static(path.join(__dirname, "public/images/notepdfs"), {
-  setHeaders: function(res, path) {
-    res.set("Cross-Origin-Resource-Policy","cross-origin");
-    res.set("Content-Security-Policy",`frame-ancestors  ${seturl2}`);
+//   }
+// }));
+// app.use("/notepdf", express.static(path.join(__dirname, "public/images/notepdfs"), {
+//   setHeaders: function(res, path) {
+//     res.set("Cross-Origin-Resource-Policy","cross-origin");
+//     res.set("Content-Security-Policy",`frame-ancestors  ${seturl2}`);
      
-    }
-}));
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, "public/images");
-    },
-    filename: (req, file, cb) => {
-      cb(null, req.body.name);
-    },
-  });
+//     }
+// }));
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//       cb(null, "public/images");
+//     },
+//     filename: (req, file, cb) => {
+//       cb(null, req.body.name);
+//     },
+//   });
   
-  const upload = multer({ storage: storage });
-  app.post("/api/upload/", upload.single("file"), (req, res) => {
+//   const upload = multer({ storage: storage });
+//   app.post("/api/upload/", upload.single("file"), (req, res) => {
      
-    try {
-      return res.status(200).json("File uploded successfully");
-    } catch (error) {
-      console.error(error);
-    }
-  });
+//     try {
+//       return res.status(200).json("File uploded successfully");
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   });
 
 
-  const storagepdf = multer.diskStorage({
-    destination: (req, pdffile, cb) => {
-      cb(null, "public/images/notepdfs");
-    },
-    filename: (req, pdffile, cb) => {
-      cb(null, req.body.pdfname);
-    },
-  });
+//   const storagepdf = multer.diskStorage({
+//     destination: (req, pdffile, cb) => {
+//       cb(null, "public/images/notepdfs");
+//     },
+//     filename: (req, pdffile, cb) => {
+//       cb(null, req.body.pdfname);
+//     },
+//   });
   
-  const uploadpdf = multer({ storage: storagepdf });
-  app.post("/api/upload/pdf", uploadpdf.single("pdffile"), (req, res) => {
+//   const uploadpdf = multer({ storage: storagepdf });
+//   app.post("/api/upload/pdf", uploadpdf.single("pdffile"), (req, res) => {
      
-    try {
-      return res.status(200).json("File uploded successfully");
-    } catch (error) {
-      console.error(error);
-    }
-  });
+//     try {
+//       return res.status(200).json("File uploded successfully");
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   });
 
 
 app.use('/api/users',useRoute);
