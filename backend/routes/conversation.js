@@ -13,9 +13,9 @@ router.post("/", async (req, res) => {
   
     try {
       const conversation = await Conversation.find({
-        members: { $in: [req.body.senderId, req.body.receiverId] },
+        members: { $all: [req.body.senderId, req.body.receiverId] },
       });
-      if(!conversation){
+      if(!conversation.length){
       const savedConversation = await newConversation.save();
       res.status(200).json(savedConversation);
       }

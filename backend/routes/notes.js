@@ -86,7 +86,7 @@ router.put("/:id/buy", async (req, res) => {
 //here id is notes id
 router.get("/:id", async (req, res) => {
   try {
-    const note = await Note.findById(req.params.id);
+    const note = await Note.findById(req.params.id).limit(10);
     res.status(200).json(note);
   } catch (err) {
     res.status(500).json(err);

@@ -58,7 +58,7 @@ export default function Messenger() {
     };
     getConversations();
   }, [user._id]);
-
+   console.log(conversations)
   useEffect(() => {
     const getMessages = async () => {
       try {

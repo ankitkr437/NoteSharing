@@ -6,8 +6,8 @@ import Homeprofile from './left/Homeprofile.jsx';
 import './Home.css';
 import UploadNote from '../../component/uploadNote/UploadNote'
 import Navbar from '../../component/Navbar';
+import BuildConversation from '../../component/BuildConversation/BuildConversation'
 const Home = () => {
-   
 
     return (
         <>
@@ -25,7 +25,7 @@ const Home = () => {
            <RenderPost /> 
            </div> 
            <div className='right-container'>
-            
+            <BuildConversation />
            </div>
           </div>
           
