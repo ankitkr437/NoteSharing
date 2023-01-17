@@ -188,7 +188,7 @@ const Navbar = () => {
              </>
           }
          
-          <Link to="/messenger" style={{textDecoration:"none"}}>
+          <Link to="/searchuser" style={{textDecoration:"none"}}>
                <MenuItem>
                <Chat style={{color:"#1b6dc4"}} />
                <Item>

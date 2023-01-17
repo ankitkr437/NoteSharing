@@ -87,8 +87,11 @@
     .chatBox{
       flex: 10;
     }
-  
+    .chatMenuWrapper{
+      padding: 0;
+    }
     .chatOnline{
+      display: none;
       flex: 1px;
     }
   }

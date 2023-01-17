@@ -147,6 +147,7 @@ export default function Messenger() {
           </div>
         </div>
         <div className="chatOnline">
+          <p style={{fontSize:"25px",margin:"2vh",borderBottom:"1px solid brown"}}>Online Users</p>
           <div className="chatOnlineWrapper">
             <ChatOnline
               onlineUsers={onlineUsers}

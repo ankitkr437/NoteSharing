@@ -9,6 +9,7 @@ import Comment from '../src/component/comment/Comment';
 import UpdatePost from "./component/updatepost/UpdatePost";
 import Messenger from "./pages/messenger/messenger";
 import {useSelector} from 'react-redux'
+import SearchUserPage from "./pages/searchUserPage/SearchUserPage";
 function App() {
   const {currentUser:user}=useSelector((state)=>state.user)
 
@@ -20,6 +21,7 @@ function App() {
      <Route path="/register"  element={user?<Navigate to="/" />:<Regiser />} />
      <Route path="/messenger" element={!user ? <Navigate to="/" /> : <Messenger />} />
      <Route path="/profile/:userId"   element={<Profile />} />
+     <Route path="/searchuser"   element={<SearchUserPage />} />
      <Route path="/profile/update"   element={<UpdateUser />} />
      <Route path="/note/update/:notesid"   element={<UpdatePost />} />
      <Route path="/viewcomment/:notesid"   element={<Comment />} />

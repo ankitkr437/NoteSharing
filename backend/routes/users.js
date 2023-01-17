@@ -120,7 +120,7 @@ router.get("/", async (req, res) => {
 router.get("/findusers/:keyword", async (req, res) => {
   
   try {
-    const data =await User.find({$or:[{'username' : new RegExp(req.params.keyword, 'i')},{'firstname' : new RegExp(req.params.keyword, 'i')},{'lastname' : new RegExp(req.params.keyword, 'i')},{'interseted' : new RegExp(req.params.keyword, 'i')},{'desc' : new RegExp(req.params.keyword, 'i')},{'institution' : new RegExp(req.params.keyword, 'i')}]});
+    const data =await User.find({$or:[{'username' : new RegExp(req.params.keyword, 'i')},{'firstname' : new RegExp(req.params.keyword, 'i')}]});
     res.status(200).json(data);
   } catch (err) {
     res.status(404).json(err);
