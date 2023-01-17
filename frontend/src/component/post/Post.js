@@ -117,7 +117,7 @@ const Post = ({ note, postUser }) => {
               >
                 <Edit />
               </Link>
-              <Delete onClick={DeleteNotes} />
+              <Delete onClick={DeleteNotes} className="delete-icon" />
             </div>
           )}
         </div>

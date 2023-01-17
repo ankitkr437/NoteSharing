@@ -73,14 +73,6 @@ function UpdatePost() {
               ></input>
             </div>
 
-            {/* <div className="Update-post-input-box">
-                <p className="Update-post-input-heading" >Price</p>
-                <input type="text" placeholder="Price in usd"
-                onChange={(e)=>setprice(e.target.value)}
-                 className="Update-post-input-block"  ></input>
-              </div>
-                */}
-
             <div className="Update-post-input-box">
               <p className="Update-post-input-heading">Note file Url</p>
               <input

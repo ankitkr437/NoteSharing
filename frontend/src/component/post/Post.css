@@ -63,7 +63,9 @@
 .post-topbar-delete-icon:hover{
     cursor: pointer;
 }
-
+.delete-icon{
+    cursor: pointer;
+}
 .main-post{
     display: flex;
 }

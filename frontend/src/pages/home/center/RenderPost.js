@@ -7,8 +7,8 @@ import { useState, useEffect } from "react";
 import { search } from "../../../redux/userRedux";
 import { useSelector, useDispatch } from "react-redux";
 import { mobile } from "../../../responsive";
-import Media from "../../../loader/Loader.js";
-
+import CircularLoader from '../../../component/CircularLoader'
+import {publicRequest} from '../../../requestMethods'
 const Container = styled.div`
   padding: 20px;
   ${mobile({ padding: "0px" })}
@@ -47,49 +47,43 @@ const SearchButton = styled.button`
 `;
 
 const RenderPost = () => {
-  const { currentUser, searchedValue } = useSelector((state) => state.user);
-  const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
+  const { currentUser:user, searchedValue } = useSelector((state) => state.user);
   const [notes, setnotes] = useState([]);
-  const [isnotes, setisnotes] = useState(false);
+  const [issearching, setissearching] = useState(false);
   const [searchedItem, setsearchedItem] = useState(searchedValue);
   const dispatch = useDispatch();
-  const issearched = searchedValue;
-  const user = currentUser;
   useEffect(() => {
     const fetchallnotes = async () => {
-      const res = await axios.get(
-        "https://notesharingbackend-ankitkr437.onrender.com/api/notes/"
-      );
-      setnotes(
-        res.data.sort((n1, n2) => {
-          return new Date(n2.createdAt) - new Date(n1.createdAt);
-        })
-      );
-      setisnotes(true);
+      setissearching(true)
+      if(!searchedValue){
+        const res = await publicRequest.get("notes/");
+        setnotes(
+          res.data.sort((n1, n2) => {
+            return new Date(n2.createdAt) - new Date(n1.createdAt);
+          })
+        );
+      }
+      else{
+        const res= await publicRequest.get("notes/findnotes/"+searchedItem);
+        setnotes(res.data);
+      }
+      setissearching(false)
     };
     fetchallnotes();
-  }, [user._id]);
+  }, [user._id,searchedValue]);
 
-  const filterdnotes =
-    isnotes &&
-    issearched &&
-    notes.filter(
-      (x) =>
-        x.notename &&
-        x.notename
-          .toLowerCase()
-          .includes(searchedValue && searchedValue.toLowerCase())
-    );
-  const searchHandler = (e) => {
+  
+  const searchHandler = async (e) => {
     e.preventDefault();
     dispatch(search(searchedItem));
   };
   useEffect(() => {
     dispatch(search(null));
   }, []);
-  if (!isnotes) return <Media />;
+  if (issearching) return <CircularLoader item={"notes"}/>;
   return (
     <>
+    
       <Wrapper>
         <SearchContainer onSubmit={searchHandler}>
           <Input
@@ -101,13 +95,10 @@ const RenderPost = () => {
           </SearchButton>
         </SearchContainer>
       </Wrapper>
-      {issearched && !filterdnotes.length ? (
-        <h4 style={{ textAlign: "center" }}>Not Found</h4>
-      ) : issearched && !(searchedValue === "") ? (
-        filterdnotes.map((p, i) => <HomePost x={p} key={i} />)
-      ) : (
-        notes.map((p, i) => <HomePost x={p} key={i} />)
-      )}
+      {
+        notes?.length===0 ? <h3 style={{textAlign:"center"}}>Not Found</h3>:
+        notes.map((p,i)=><HomePost x={p} key={i}/>)
+      }
     </>
   );
 };

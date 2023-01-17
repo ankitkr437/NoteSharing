@@ -3,31 +3,50 @@ import "./UploadNote.css";
 import { useState} from "react";
 import axios from "axios";
 import {useSelector} from 'react-redux'
-import "./UploadNoteForm.css";
+import {
+   CloudUpload,Close,PictureAsPdf,AddCircle,Image,
+} from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
+import { mobile } from "../../responsive";
+const useStyles = makeStyles(theme => ({
+  uploadIcon: {
+    color:"#167eec",
+    fontSize:"3rem",
+  },
+  UploadPdfIcon:{
+    color:"#167eec",
+    fontSize:"3rem",
+  },
+  closeIcon:{
+    fontSize:"3rem"
+  },
+  uploadAdd:{
+    color:"#167eec",
+    fontSize:"3rem",
+  },
+  upload:{
+    color:"#167eec",
+    fontSize:"2rem",
+  }
+}));
 const UploadNote = () => {
-  const {currentUser } = useSelector((state)=>state.user)
-  const user=currentUser
+  const {currentUser:user} = useSelector((state)=>state.user)
   const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
 
   const ShowForm = useRef();
   const notename = useRef();
   const descritpion = useRef();
-  const price = useRef();
-  const [notefile,setnotefile]=useState(null)
+  const [isupload,setsetisupload]=useState(false)
   const [fileurl,setfileurl]=useState("")
   const [fileimg,setfileimg]=useState(null)
   const ShowFormHandler = () => {
     if ((ShowForm.current.style.display = "flex"))
       ShowForm.current.style.display = "none";
   };
-  const audio= new Audio();
-  audio.src = "/music/update.wav";
-  const SellFormSubmitHandler = async (e) => {
+  const uploadNoteFormSubmitHandler = async (e) => {
 
-     alert("notes uploading started...")
+     alert("Uploading started, it will take few minutes...")
      e.preventDefault();
-     audio.play();
-    
     const newNote = {
       userId: user._id,
       desc: descritpion.current.value,
@@ -45,72 +64,73 @@ const UploadNote = () => {
     try {
       await axios.post("https://notesharingbackend-ankitkr437.onrender.com/api/notes", newNote);
       window.location.reload();
-      alert("successfully uploaded notes")
+      alert("successfully uploaded")
     } catch (err) {}
   };
-
-  const UpFormHandler = () => {
-    if (ShowForm.current.style.display == "none")
-      ShowForm.current.style.display = "flex";
-  };
+  const classes = useStyles();
   return (
-    <>
-      <div className="sell-container-home">
-        <div className="sell-img-home">
-          <img
-           src={user.profilePicture?user.profilePicture:pf +"DefaultBoy.jpg"}
-          ></img>
-        </div>
-        <div className="sell-post-home" onClick={UpFormHandler}>
-          <p onClick={UpFormHandler} className="sell-post-home-text">
+    <> 
+     {
+       !isupload &&
+        <div className="uploadNote-post"  onClick={() => {setsetisupload((curr) => !curr);}}>
+          <PictureAsPdf  className={classes.UploadPdfIcon}/>
+          <p className="uploadNote-post-text">
             Upload a Note
           </p>
+          <CloudUpload className={classes.uploadIcon}/>
         </div>
-        <div className="sell-form-container" ref={ShowForm}>
-        <img src="https://img.icons8.com/ios-filled/50/000000/delete-sign--v2.png"
-         className="sell-form-cut-icon"
-         onClick={ShowFormHandler}
-        />
-
-          <form onSubmit={SellFormSubmitHandler} className="sell-form">
+        }
+        { isupload && <div className="uploadNote-form-container" >
+          <div className="upload-note-top">
+          <div className="upload-note-top-left">
+          <AddCircle className={classes.uploadAdd}/>
+          <p className="upload-note-title">Upload a Note</p>
+          </div> 
+        <Close onClick={() => {setsetisupload((curr) => !curr);}} className={classes.closeIcon} id="close-icon"/>
+          </div>
+          <form onSubmit={uploadNoteFormSubmitHandler} className="uploadNote-form">
             <input
               type="text"
-              placeholder="Notename(not more than 30 character)"
-              className="sell-form-note-name"
+              placeholder="Notename(not more than 30 character)*"
+              className="uploadNote-form-note-name"
+              id="upload-note-input"
               ref={notename}
               maxLength="30"
               required
             ></input>
             <input
               type="text"
-              placeholder="Descritpion(not more than 300 character)"
-              className="sell-form-descritpion"
+              placeholder="Descritpion(not more than 300 character)*"
+              className="uploadNote-form-descritpion"
               ref={descritpion}
+              id="upload-note-input"
               maxLength="300"
               required
             ></input>
             <input
               type="text"
-              id="pdf-file-upload"
+              id="upload-note-input"
               onChange={(e)=>setfileurl(e.target.value)}
-              placeholder="Url of note(file must be in pdf format)"
+              placeholder="Url of note*"
               required
             ></input>
-            <label for="thumbnail-file-upload" class="custom-file-upload">
-             Thumbnail for notes
+            <label for="thumbnail-file-upload" className="custom-file-upload">
+              <Image className={classes.upload}/>
+              <p>Upload a thumbnail image</p>
+             <CloudUpload className={classes.upload}/>
             </label>
             <input
+            placeholder="Thumbnail image"
               type="file"
               id="thumbnail-file-upload"
              accept=".png,.jpeg,.jpg"
-             //for uploading just single file i have done files[0]
              onChange={(e)=>setfileimg(e.target.files[0])}
             >
             </input>
-            <button type="submit" className="sellform-submit-button">Submit</button>
+            <button type="submit" className="uploadNote-form-submit-button">Upload</button>
           </form>
         </div>
-      </div>
+        }
     </>
   );
 };
