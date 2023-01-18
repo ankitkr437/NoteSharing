@@ -98,7 +98,7 @@ const RenderPost = () => {
       <Wrapper>
         <SearchContainer onSubmit={searchHandler}>
           <Input
-            placeholder="Search users by name or related field..."
+            placeholder="Search users ..."
             onChange={(e) => setsearchedItem(e.target.value)}
             required
           />

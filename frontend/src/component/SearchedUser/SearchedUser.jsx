@@ -7,6 +7,7 @@ import { publicRequest } from '../../requestMethods'
 import {Send} from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { Navigate, useNavigate } from "react-router";
+import Loader from "../CircularLoader";
 const UserOne=styled.div`
     width: 100%;
     background-color:#99c9f9;
@@ -52,17 +53,20 @@ const SearchedUser = ({receiverUser}) => {
     const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
     const { currentUser:user} = useSelector((state) => state.user);
     const classes =useStyles();
+    const [isbuilding ,setisbuilding] =useState(false)
     const [receiverId,setreceiverId]=useState(receiverUser?._id)
     const navigate=useNavigate();
     const buildConversationHandler= async({u})=>{
         console.log({ senderId:user?._id,
             receiverId})
+          setisbuilding(true)
          try{
             const res= await publicRequest.post("conversations",{
               senderId:user?._id,
               receiverId
             })
             console.log(res.data)
+            setisbuilding(false)
             navigate('/messenger')
          }
          catch(err){
@@ -70,6 +74,9 @@ const SearchedUser = ({receiverUser}) => {
          }
     }
   return (
+    <>
+    {
+    isbuilding?<Loader item={"redirecting"}/>:
     <UserOne onClick={buildConversationHandler}>
     <UserLeft>
      <UserImg src={
@@ -83,6 +90,8 @@ const SearchedUser = ({receiverUser}) => {
        <Send className={classes.sendIcon}/>
     </UserRight>
 </UserOne>
+      }
+      </>
   )
 }
 
