@@ -65,7 +65,6 @@
     border-left: none;
     outline: none;
     margin-top: 2vh;
-    cursor: pointer;
 }
 .uploadNote-form{
     display: flex;
