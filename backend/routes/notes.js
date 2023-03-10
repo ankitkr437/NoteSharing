@@ -123,12 +123,25 @@ router.get("/profile/:userId", async (req, res) => {
 //GET all featured authors
 router.get("/", async (req, res) => {
   try {
-      const notes= await Note.find();
+    console.log(req.query)
+      const count=req.query.count?req.query.count:10;
+      const notes= await Note.find().limit(count);
       res.status(200).json(notes);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+//GET all featured authors accoring to number of count
+// router.get("/", async (req, res) => {
+//   try {
+//       const notes= await Note.find();
+//       res.status(200).json(notes);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 
 //find a note by some name
 router.get("/findnotes/:keyword", async (req, res) => {
