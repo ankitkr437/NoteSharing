@@ -6,7 +6,7 @@ import {
   CloseRounded,
 } from "@material-ui/icons";
 import { useState } from "react";
-import Footer from '../footer/Footer';
+ 
 import {publicRequest} from'../../requestMethods'
 import {useSelector,useDispatch} from 'react-redux'
 import {logout,search} from "../../redux/userRedux";
@@ -117,7 +117,7 @@ const Topbar = () => {
          className="topbar-setting"
          />
           </div> 
-          <Footer></Footer>   
+           
       </div>
      
 

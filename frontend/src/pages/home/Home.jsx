@@ -6,6 +6,7 @@ import Homeprofile from './left/Homeprofile.jsx';
 import './Home.css';
 import UploadNote from '../../component/uploadNote/UploadNote'
 import Navbar from '../../component/Navbar';
+import Footer from '../../component/footer/Footer'
 import BuildConversation from '../../component/BuildConversation/BuildConversation'
 const Home = () => {
 
@@ -30,6 +31,7 @@ const Home = () => {
           </div>
           
         </div>
+        <Footer />
         </>
     )
 }

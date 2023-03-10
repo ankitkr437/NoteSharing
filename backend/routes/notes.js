@@ -132,15 +132,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-//GET all featured authors accoring to number of count
-// router.get("/", async (req, res) => {
-//   try {
-//       const notes= await Note.find();
-//       res.status(200).json(notes);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+
 
 
 //find a note by some name

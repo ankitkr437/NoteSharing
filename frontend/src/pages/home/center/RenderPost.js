@@ -77,7 +77,7 @@ const RenderPost = () => {
     const fetchallnotes = async () => {
       setissearching(true)
       if(!searchedValue){
-        const res = await publicRequest.get(`notes/count=${postcount}`);
+        const res = await publicRequest.get(`notes/?count=${postcount}`);
         setnotes(
           res.data.sort((n1, n2) => {
             return new Date(n2.createdAt) - new Date(n1.createdAt);
@@ -91,7 +91,7 @@ const RenderPost = () => {
       setissearching(false)
     };
     fetchallnotes();
-  }, [user._id,searchedValue]);
+  }, [user._id,searchedValue,postcount]);
 
   
   const searchHandler = async (e) => {
@@ -117,10 +117,10 @@ const RenderPost = () => {
           </SearchButton>
         </SearchContainer>
       </Wrapper>
-      {/* {
+      {
         notes?.length===0 ? <h3 style={{textAlign:"center"}}>Not Found</h3>:
         notes.map((p,i)=><HomePost x={p} key={i}/>)
-      } */}
+      }
       <ShowmoreButton onClick={()=>{setpostcount(postcount+5)}}>Show More <ArrowForward /></ShowmoreButton>
     </>
   );

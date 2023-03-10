@@ -1,24 +1,44 @@
-import React from 'react'
-import './Footer.css';
-
+import React from "react";
+import "./Footer.css";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Footer = () => {
-    return (
-        <>
-         <div className='footer-complete-container' style={{marginTop:"5vh"}}> 
-         <div className='footer-container'>
-              <div className='contact-upper'>
-              <p style={{fontSize:"17x"}}>all rights reserved</p>
-              <p style={{fontSize:"17x"}}>contact us</p>
-              </div>
-              <div className='contact-text'>
-              <a href="mailto:ankitloharshi@gmail.com">  <img src="https://img.icons8.com/ios/50/000000/email-open.png" className='contact-img'/>
-             </a>
-              <a href="https://github.com/ankitkr437/Handnotes"> <img src="https://img.icons8.com/ios-glyphs/50/000000/github.png" className='contact-img'/></a>
-              </div>
-         </div>  
-         </div>
-        </>
-    )
-}
+  const currentUser= useSelector(state=>state.user.currentUser)
+  return (
+    <>
+      <div className="footer-container">
+        <div className="about-footer">
+          <h3 className="crypto-logo">
+             NoteSharing
+          </h3>
+          <div className="about-content-container">
+            <p className="about-us-title">ABOUT US</p>
+            <p className="about-content">
+              A website which allows to get any desired notes.
+              <br />
+              Users can upload own notes or view/search for any notes, can create own awesome profile or can chat with any other users 
+            </p>
+          </div>
+          </div>
+          <div className="footer-bottom-container">
+            <p className="copyright">
+            Copyright © 2023 NoteSharing. All Rights Reserved
+            </p>
+            <div className="footer-link">
+              <Link to="/" className="footer-link-item" style={{textDecoration:"none"}}>
+                Home
+              </Link>
+              <Link to={"/profile/"+currentUser._id} className="footer-link-item" style={{textDecoration:"none"}}>
+                Profile
+              </Link>
+              <Link to="/searchuser" className="footer-link-item" style={{textDecoration:"none"}}>
+                 Chat
+              </Link>
+            </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default Footer
+export default Footer;
