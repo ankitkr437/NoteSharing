@@ -8,12 +8,12 @@ import {Link} from 'react-router-dom'
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
+  /* background: linear-gradient(
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
     url("https://img.freepik.com/free-vector/online-document-concept-illustration_114360-5453.jpg?w=900&t=st=1673501437~exp=1673502037~hmac=f7a813ace48ce8a1ce1be58c1d1507746faa24876235b9c94f44584380ed1cd5")
-      center;
+      center; */
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
