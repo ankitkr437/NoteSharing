@@ -7,7 +7,7 @@ import Note from '../model/Userschema.js'
 
 //update user
 router.put("/:id", async (req, res) => {
-    if (req.body.userId === req.params.id || req.body.isAdmin) {
+    
       if (req.body.password) {
         try {
           const salt = await bcrypt.genSalt(10);
@@ -24,9 +24,7 @@ router.put("/:id", async (req, res) => {
       } catch (err) {
         return res.status(500).json(err);
       }
-    } else {
-      return res.status(403).json("You can update only your account!");
-    }
+    
   });
 
 
@@ -57,11 +55,7 @@ router.put("/:id", async (req, res) => {
     }
   });
 
-   
-
-
 //follow a user
-
 router.put("/:id/follow", async (req, res) => {
   if (req.body.userId !== req.params.id) {
     try {
@@ -81,6 +75,7 @@ router.put("/:id/follow", async (req, res) => {
     res.status(403).json("you cant follow yourself");
   }
 });
+
 
 //unfollow a user
 
@@ -126,5 +121,41 @@ router.get("/findusers/:keyword", async (req, res) => {
     res.status(404).json(err);
   }
 });
+
+//GET all featured authors
+router.get("/getauthors", async (req, res) => {
+  try {
+    const data =await User.find();
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(404).json(err);
+  }
+});
+
+
+//GET USER STATS
+
+router.get("/stats/authors",  async (req, res) => {
+  try {
+    const data = await User.aggregate(
+      [
+          { "$project": {
+              "username":1,
+              "profilePicture":1,
+              "followers_length":{ "$size": "$followers" },
+              "institution":1,
+              "notes_length": { "$size": "$notes" }
+          }},
+          { "$sort": { "notes_length": -1 } },
+          { "$limit": 10 }
+      ])
+    res.status(200).json(data)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
 export default router;
 

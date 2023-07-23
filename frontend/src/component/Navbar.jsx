@@ -1,6 +1,7 @@
 import { Badge } from "@material-ui/core";
 import { Search, Chat, Menu,AccountCircle,ExitToApp } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useSelector,useDispatch} from "react-redux";
@@ -112,9 +113,11 @@ const Navbar = () => {
   const currentUser= useSelector(state=>state.user.currentUser)
   const [searchedValue,setsearchedValue]=useState(null)
   const item=useRef();
+  let navigate = useNavigate();
   const dispatch = useDispatch();
   const logoutHandler=()=>{
     dispatch(logout());
+    navigate("/login");
   }
   const searchHandler=(e)=>{
     e.preventDefault();

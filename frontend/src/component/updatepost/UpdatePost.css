@@ -6,7 +6,7 @@
 .Update-post-container-complete{
     height: 100vh;
     width: 96vw;
-    padding-top: 14vh;
+    padding-top: 7vh;
     padding-left: 3vw;
 }
 .Update-post-container{
@@ -41,8 +41,7 @@
 
 .Update-post-input-heading{
     font-size: 15px;
-    line-height: 1vh;
-
+    margin-bottom: 1vh;
 }
 
 .Update-post-input-block{
@@ -60,8 +59,7 @@
 
 .Update-post-input-heading-file{
     font-size: 15px;
-    line-height: 1vh;
-
+    margin-bottom: 1vh;
 }
 
 .Update-post-input-block-file{
@@ -76,13 +74,12 @@
     outline: none;
 }
 .Update-post-container-form-submit{
-    background-color: #8190b5;
-    box-shadow: 0 6px 13px grey;
-    font-size: 22px;
-    width: 54%;
-    border-radius: 12px;
-    margin: auto;
-    border: 1px solid grey;
+    background-color: black;
+    font-size: 16px;
+    padding: 7px;
+    width: 17%;
+    color: white;
+    border: 1px solid black;
 }
 
 @media only screen and (max-width: 650px) {
@@ -90,9 +87,7 @@
       margin-right: 3vh;
     }
     .Update-post-container-form-submit{
-    font-size: 17px;
-    width: 80%;
-    margin-left: 2vh;
-    height: 5vh;
+    font-size: 14px;
+    width: 40%;
     }
 }

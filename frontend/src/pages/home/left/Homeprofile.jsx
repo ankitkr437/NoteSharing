@@ -65,7 +65,7 @@ const Homeprofile = () => {
           </div> 
         </div>
           <div className='footer-complete-container'> 
-         <div className='footer-container'>
+         <div className='footer-home-container'>
               <div className='contact-upper'>
               <p>all rights reserved</p>
               <p>contact us</p>

@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux'
 import {
    CloudUpload,Close,PictureAsPdf,AddCircle,Image,
 } from "@material-ui/icons";
+import { publicRequest } from "../../requestMethods";
 import { makeStyles } from "@material-ui/core/styles";
 import { mobile } from "../../responsive";
 const useStyles = makeStyles(theme => ({
@@ -62,7 +63,7 @@ const UploadNote = () => {
       
     }
     try {
-      await axios.post("https://notesharingbackend-ankitkr437.onrender.com/api/notes", newNote);
+      await publicRequest.post("/notes", newNote);
       window.location.reload();
       alert("successfully uploaded")
     } catch (err) {}

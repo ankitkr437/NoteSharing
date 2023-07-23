@@ -1,5 +1,5 @@
 .messenger {
-    height: calc(100vh - 70px);
+    height: calc(100vh - 20vh);
     display: flex;
   }
   
@@ -38,19 +38,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
   
   .chatMessageInput {
-    width: 80%;
-    height: 90px;
+    width: 85%;
+    height: 45px;
     padding: 10px;
+    border: none;
   }
   
   .chatSubmitButton {
-    width: 70px;
-    height: 40px;
+    width: 15%;
+    height: 45px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     background-color: #3E8DE3;
     color: white;
@@ -77,6 +78,9 @@
   }
   
   @media screen and (max-width: 768px) {
+    .messenger{
+      height: calc(100vh - 21vh);
+    }
     .chatMenu {
       flex: 1;
     }
@@ -94,5 +98,8 @@
     .chatOnline{
       display: none;
       flex: 1px;
+    }
+    .chatMessageInput{
+      height: 45px;
     }
   }

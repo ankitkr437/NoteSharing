@@ -61,7 +61,6 @@ const Agreement = styled.span`
   font-size: 10px;
    margin-bottom: 20px;
    margin-top: 5px;
-   background-color: #679af7;
 `;
 
 const Button = styled.button`
@@ -104,6 +103,7 @@ const Register = () => {
     register(dispatch,{
       firstname,lastname,username,email, password,
   }) : alert("password is not same")
+  
 }
    
   return (

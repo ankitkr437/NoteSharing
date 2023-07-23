@@ -5,8 +5,6 @@ const UserSchema = new mongoose.Schema(
     username: {
       type: String,
       require: true,
-      min: 3,
-      max: 20,
       unique: true,
     },
     firstname: {
@@ -15,22 +13,17 @@ const UserSchema = new mongoose.Schema(
     lastname: {
       type: String,
     },
-    country:{
-      type: String,
-    },
     interested:{
       type: String,
     },
     email: {
       type: String,
       required: true,
-      max: 50,
       unique: true,
     },
     password: {
       type: String,
       required: true,
-      min: 6,
     },
     profilePicture: {
       type: String,
@@ -48,18 +41,14 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    desc: {
-      type: String,
-      max: 50,
-    },
-    city: {
-      type: String,
-      max: 50,
-    },
     institution: {
         type: String,
         max: 50,
       },
+    notes:{
+      type:Array,
+      default:[],
+    },
   },
   { timestamps: true }
 );

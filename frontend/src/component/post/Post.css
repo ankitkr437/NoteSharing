@@ -47,7 +47,7 @@
     font-size: 12px;
     font-weight: 300;
     line-height: 2px;
-    color: rgb(64, 77, 77);
+    color:black;
 }
 .post-topbar-edit-delete-container{
     display: flex;

@@ -27,15 +27,11 @@ const NoteSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
-      buy: {
+    //buy is actually view
+    buy: {
         type: Array,
         default: [],
-      },
-      // comments :{
-      //   type: Array,
-      //   default: [],
-      //  } ,
-     
+    },
   },
   { timestamps: true }
 );

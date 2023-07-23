@@ -5,66 +5,62 @@
 }
 
 .comment-container{
-    padding-top: 1vh;
-    display: flex;
-    height: 100vh;
-    padding: 2vh 0vw;
+  display: flex;
+  flex-direction: column;
+  padding: 1vh 5vw;
 }
 .comment-info-container{
-    overflow-y: scroll;
+  height: 76vh;
+  overflow-y: scroll;
+  padding-right: 2vw;
 }
-.comment-info-container::-webkit-scrollbar {
-    width: 7px;               /* width of the entire scrollbar */
-  }
-  
-  .comment-info-container::-webkit-scrollbar-track {
-    background: white;       /* color of the tracking area */
-  }
-  
-  .comment-info-container::-webkit-scrollbar-thumb {
-    background-color: rgb(78, 78, 220);    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid rgb(0, 8, 255);  /* creates padding around scroll thumb */
-  }
 .comment-form{
-    display: flex;
-     width: 100vw;
-     height: 8vh;
-     position: fixed;
-     bottom: 0;
-     flex-direction: row;
-     margin: 0 0;
-     padding: 0 0 ;
-       align-items: center;
-       justify-content: center;
-}
-.comment-input{
-    width: 80vw;
-    height: 91%;
-    border-radius: 10px;
-    padding: 0 2vh;
-}
- 
-.comment-submit-icon-form{
-  border: 2px solid;
-    border-left: none;
-    height: 7vh;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 7vw;
+  margin-top: 2vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 #submit-comment-form{
-    display: none;
+  display: none;
+}
+.comment-input{
+  width: 85%;
+  padding-left: 10px;
+  font-size: 14px;
+  border: none;
+}
+.comment-submit-icon-form{
+    width: 15%;
+    background-color: rgb(51, 125, 228);
+    color: white;
+   padding: 12px;
+   text-align: center;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(148, 149, 151); 
+  border-radius: 10px;
+}
 
-@media only screen and (max-width: 768px) {
-
-    .comment-submit-icon-form{
-          width: 9vw;
-      }
-     
-    
+ 
+@media (max-width:600px) {
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  .comment-container{
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 1vw;
+  }
+  .comment-info-container{
+    height: 70vh;
+  }
+  .comment-input{
+    padding-left: 10px;
+  }
 }

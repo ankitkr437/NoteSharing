@@ -17,7 +17,7 @@ const userSlice = createSlice({
       state.currentUser = action.payload;
       state.error=false;
     },
-    loginFailure: (state) => {
+    loginFailure: (state,action) => {
       state.isFetching = false;
       state.error = true;
     },
@@ -40,7 +40,6 @@ const userSlice = createSlice({
       state.searchedValue=action.payload;
     },
     follow:(state,action)=>{
-      
         state.currentUser.followings=[...state.currentUser.followings, action.payload]
     },
     unFollow:(state,action)=>{

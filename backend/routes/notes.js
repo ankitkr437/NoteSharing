@@ -9,11 +9,15 @@ router.post("/", async (req, res) => {
   const newNote = new Note(req.body);
   try {
     const savedNote = await newNote.save();
+    const user = await User.findById(savedNote.userId);
+    await user.updateOne({ $push: { notes: savedNote._id } });
     res.status(200).json(savedNote);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+
 //update a note
 // here params id is of one post id created by itself mongo db
 
@@ -35,12 +39,11 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const note = await Note.findById(req.params.id);
-    // if (note.userId === req.body.userId) {
+      const user = await User.findById(note.userId);
+      await user.updateOne({ $pull: { notes: note._id } });
       await note.deleteOne();
       res.status(200).json("the post has been deleted");
-    // } else {
-    //   res.status(403).json("you can delete only your post");
-    // }
+    
   } catch (err) {
     res.status(500).json(err);
   }
@@ -95,6 +98,7 @@ router.get("/:id", async (req, res) => {
 
 //get timeline posts
 // here params userId is a current user of which we have to find all post and also to  find its followings post this is what we create a timeline
+// Promise.all(): This is a static method that takes an array of promises as input and returns a new promise. The new promise resolves when all the input promises in the array are resolved, and it rejects if any of the input promises reject.
 router.get("/timeline/:userId", async (req, res) => {
     try {
       const currentUser = await User.findById(req.params.userId);
@@ -120,12 +124,13 @@ router.get("/profile/:userId", async (req, res) => {
   }
 });
 
-//GET all featured authors
+//GET all notes
 router.get("/", async (req, res) => {
   try {
     console.log(req.query)
       const count=req.query.count?req.query.count:10;
       const notes= await Note.find().limit(count);
+      notes.reverse();
       res.status(200).json(notes);
   } catch (err) {
     res.status(500).json(err);

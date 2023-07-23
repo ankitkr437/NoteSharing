@@ -194,8 +194,7 @@
   display: flex;
   height: 100%;
   width: 100%;
-  margin-top: 3vh;
-  padding-left: 4vw;
+  margin-top: 10vh;
 }
 .contributions-phone {
   display: none;
@@ -213,6 +212,7 @@
   }
   .user-timeline {
     display: block;
+    margin-top: 6vh;
   }
   .profile-desc {
     padding-left: 1vh;

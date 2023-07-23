@@ -11,11 +11,8 @@ const UpdateUser = () => {
   const { currentUser: user } = useSelector((state) => state.user);
   const [firstname, setfirstname] = useState();
   const [lastname, setlastname] = useState();
-  const [country, setcountry] = useState();
-  const [city, setcity] = useState();
   const [institution, setinstitution] = useState();
   const [interested, setinterested] = useState();
-  const [desc, setdesc] = useState();
   const [photo, setphoto] = useState(null);
   const [password, setpassword] = useState();
 
@@ -28,10 +25,7 @@ const UpdateUser = () => {
       userId: user._id,
       firstname: firstname,
       lastname: lastname,
-      country: country,
       interested: interested,
-      desc: desc,
-      city: city,
       institution: institution,
       password: password,
     };
@@ -109,25 +103,9 @@ const UpdateUser = () => {
                 ></input>
               </div>
 
-              <div className="input-box">
-                <p className="input-heading">Country</p>
-                <input
-                  type="text"
-                  placeholder="country"
-                  onChange={(e) => setcountry(e.target.value)}
-                  className="input-block"
-                ></input>
-              </div>
+              
 
-              <div className="input-box">
-                <p className="input-heading">City</p>
-                <input
-                  type="text"
-                  placeholder="city"
-                  onChange={(e) => setcity(e.target.value)}
-                  className="input-block"
-                ></input>
-              </div>
+             
 
               <div className="input-box">
                 <p className="input-heading">Institution</p>
@@ -149,15 +127,7 @@ const UpdateUser = () => {
                 ></input>
               </div>
 
-              <div className="input-box">
-                <p className="input-heading">Say about yourself</p>
-                <input
-                  type="text"
-                  placeholder="description"
-                  onChange={(e) => setdesc(e.target.value)}
-                  className="input-block"
-                ></input>
-              </div>
+              
 
               <div className="input-box">
                 <p className="input-heading">Update your password</p>

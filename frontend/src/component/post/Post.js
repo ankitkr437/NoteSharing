@@ -63,13 +63,13 @@ const Post = ({ note, postUser }) => {
   };
   const DeleteNotes = async () => {
     let response = prompt(
-      `Do you really want to delete this note if yes the type "YES" or type "NO" `
+      `Do you really want to delete this note if yes then type "YES" or type "NO" `
     );
     try {
       response === "YES" &&
         (await publicRequest.delete(`notes/${note._id}`, { userId: user._id }));
       response === "YES" && alert("notes deleted successfully");
-      response === "YES" && navigate("/");
+      response === "YES" && window.location.reload();
     } catch (err) {
       alert("sorry you can not delete this note");
       console.log("unsuccess");
@@ -158,7 +158,7 @@ const Post = ({ note, postUser }) => {
           <Link
             to={`/viewcomment/${note._id}`}
             className="link-in-comment"
-            style={{ textDecoration: "none" }}
+            style={{ textDecoration: "none",color:"black" }}
           >
             <div className="post-reaction">
               <Comment />

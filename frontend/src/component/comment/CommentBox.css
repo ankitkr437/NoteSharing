@@ -20,12 +20,14 @@
 }
 
 .comment-box-message{
-    width: 80vw;
-    border: 1px solid grey;
-    border-radius: 10px;
-    background-color: rgb(219, 232, 238);
-    margin-left: 1vw;
+    
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(248, 250, 251);
     padding: 7px 10px;
+    font-size: 12px;
+
 }
 .comment-box-message-name{
     display: flex;

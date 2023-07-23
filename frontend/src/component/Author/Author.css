@@ -14,7 +14,7 @@
  
 .author-card{
     min-width: 170px;
-    min-height: 200px;
+    min-height: 180px;
     box-shadow: 0px 0px 10px 7px rgb(233, 238, 233);
     border-radius: 8px;
     margin-left: 1vh;
@@ -61,10 +61,20 @@
 
 }
  
+.author-institution{
+    margin-top: 3vh;
+    font-size: 14px;
+    font-weight: 500;
+}
 
 
 @media only screen and (max-width: 600px) {
-
+    .user-timeline {
+        padding-left: 0vw;
+    }
+    .profile-top{
+        flex-direction: column;
+    }
     .featured-author{
         font-size: 24px;
     }
