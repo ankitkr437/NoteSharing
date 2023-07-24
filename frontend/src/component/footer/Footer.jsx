@@ -8,9 +8,11 @@ const Footer = () => {
     <>
       <div className="footer-container">
         <div className="about-footer">
-          <h3 className="crypto-logo">
+           
+          <p className="logo">
              NoteSharing
-          </h3>
+          </p>
+          
           <div className="about-content-container">
             <p className="about-us-title">ABOUT US</p>
             <p className="about-content">
@@ -19,7 +21,13 @@ const Footer = () => {
               Users can upload own notes or view/search for any notes, can create own awesome profile or can chat with any other users 
             </p>
           </div>
+
+          <div className="Contact-contribute-container">
+              <a href="mailto:ankitloharshi@gmail.com" className="about-us-title" target="blank">Contact Us</a>   
+              <a href="https://github.com/ankitkr437/NoteSharing" className="about-us-title" target="blank">Want to contribute</a>   
           </div>
+          </div>
+
           <div className="footer-bottom-container">
             <p className="copyright">
             Copyright © 2023 NoteSharing. All Rights Reserved

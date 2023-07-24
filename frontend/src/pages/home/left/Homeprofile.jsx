@@ -26,11 +26,11 @@ const Homeprofile = () => {
     <> 
      <div className="leftmost-topbar">
 
-     <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none" }} className="topbar-img-username">
+     <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none", color:"black" }} className="topbar-img-username">
             <img src={(user && user.profilePicture)?user.profilePicture:pf +"DefaultPic.png"} className="topbar-menu-Img" />
-          <p className="menu-username">{user?.username}</p>
+          <p className="menu-username" style={{textAlign:"center"}}>{user?.username}</p>
           </Link>
-      <hr />
+      
      </div>
      
     <div className="leftmost-desc">
@@ -41,13 +41,13 @@ const Homeprofile = () => {
       <p className="leftmost-links">Home</p> 
       </div>     
      </Link>
-      <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none" }} className="profile-link-icons">
+      <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none", color: "#214368" }} className="profile-link-icons">
       <div className="menuItem">
       <AccountCircle />
       <p className="leftmost-links">View Profile</p> 
       </div>     
      </Link>
-     <Link to={`/messenger`} style={{textDecoration:"none"}} className="profile-link-icons" >
+     <Link to={`/messenger`} style={{textDecoration:"none",color:"#38393b"}} className="profile-link-icons" >
         <div className="menuItem">
            <Chat style={{color:"rgb(43, 68, 97)"}}/>
            <p className="leftmost-links">Chat</p>
@@ -63,19 +63,7 @@ const Homeprofile = () => {
            <ExitToApp />
            <p className="leftmost-links">Logout</p>
           </div> 
-        </div>
-          <div className='footer-complete-container'> 
-         <div className='footer-home-container'>
-              <div className='contact-upper'>
-              <p>all rights reserved</p>
-              <p>contact us</p>
-              </div>
-              <div className='contact-text'>
-              <a href="mailto:ankitloharshi@gmail.com">  <img src="https://img.icons8.com/ios/50/000000/email-open.png" className='contact-img'/>
-             </a>
-              <a href="https://github.com/ankitkr437/Handnotes"> <img src="https://img.icons8.com/ios-glyphs/50/000000/github.png" className='contact-img'/></a>
-              </div>
-         </div>    
+
    </div>
     </>
   )

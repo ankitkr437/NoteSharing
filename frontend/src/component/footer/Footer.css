@@ -11,16 +11,23 @@
     padding-top: 3vh;
     padding-bottom: 3vh; */
 }
+.logo{
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+    padding: 0;
+    color:white;
+}
 .about-footer{
     display: flex;
     flex-direction: row;
     margin-bottom: 5vh;
+    width: 85%;
+    justify-content: space-between;
 }
 .footer-bottom-container{
-    
-    padding-right: 2vw;
     display: flex;
-    width: 71%;
+    width: 85%;
     /* height: 6vh; */
     /* background-color: rgb(29, 64, 130); */
     flex-direction: row;
@@ -60,9 +67,17 @@
 .footer-link-item:hover{
     color: rgb(90, 147, 222);
 }
+.Contact-contribute-container{
+    display: flex;
+    flex-direction: column;
+}
+.Contact-contribute-container a{
+font-size: 15px;
+font-weight: 400;
+}
 @media (max-width:700px) {
     .footer-container{
-        height: 36vh;
+        height: 41vh;
     }
     .about-footer{
         flex-direction: column;
@@ -102,4 +117,11 @@
     .footer-link-item{
         margin-bottom: 1vh;
     }
+    .Contact-contribute-container{
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        margin-top: 2vh;
+    }
+     
 }

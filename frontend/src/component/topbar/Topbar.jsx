@@ -95,7 +95,7 @@ const Topbar = () => {
      </div>
 
      <div>
-     <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none" }}>
+     <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none", color: "#3E8DE3" }}>
       <p  className="menu-view-profile" onClick={MenuClickHandler}>View Profile</p>      
      </Link>
      </div>
@@ -107,7 +107,7 @@ const Topbar = () => {
     </div>
        </div>
         <hr />
-       <Link to={`/profile/update`} style={{textDecoration:"none"}} className="profile-update-menu" onClick={MenuClickHandler}>
+       <Link to={`/profile/update`} style={{textDecoration:"none",color: "#3E8DE3"}} className="profile-update-menu" onClick={MenuClickHandler}>
           <p className="profile-update-link-tag">Setting</p>
           <img src="https://img.icons8.com/ios/30/000000/settings--v2.png" className="topbar-setting"/>
             </Link>
