@@ -138,9 +138,7 @@ const Post = ({ note, postUser }) => {
             </div>
           </div>
           <div className="main-post-about" style={{ lineHeight: "1.4" }}>
-            <Link to={`/notes/${note._id}`} style={{ textDecoration: "none" }}>
               <p className="main-post-notename">{note.notename}</p>
-            </Link>
             <p className="main-post-description">Description:</p>
             <p className="main-post-desc">{note.desc}</p>
           </div>
