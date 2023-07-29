@@ -21,6 +21,7 @@ dotenv.config();
 const port=process.env.PORT ||8000;
  
 const URL=process.env.URL;
+console.log(URL)
 connection(URL);
 
  
