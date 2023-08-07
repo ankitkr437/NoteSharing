@@ -1,6 +1,6 @@
-NoteSharing is a web application that allows users to share their notes with others and interact with fellow users through a built-in chat feature. With NoteShare, you can easily create, manage, and share your notes while connecting with like-minded individuals.
+#NoteSharing is a web application that allows users to share their notes with others and interact with fellow users through a built-in chat feature. With NoteShare, you can easily create, manage, and share your notes while connecting with like-minded individuals.
 
-![Screenshot](home.png)
+![Screenshot](./frontend/public/images/home.png)
 
 Features
 User Profiles: Every user gets their own profile where they can view and manage their notes, as well as see their activity and engagement on the platform.
