@@ -8,18 +8,23 @@ NoteShare is a web application that allows users to share their notes with other
 ## Features
 
 - **User Profiles:** Every user gets their own profile where they can view and manage their notes, as well as see their activity and engagement on the platform.
+  
   ![profile page](https://github.com/ankitkr437/NoteSharing/blob/main/frontend/public/image/userprofile.png)
 
 
 - **Note Sharing:** Share your notes with the community which will help others to get more on that topic.
+  
   ![uploadNOte page](https://github.com/ankitkr437/NoteSharing/blob/main/frontend/public/image/uploadform.png)
 
   
 - **React on Notes:** React like if you like the notes also one can add the comment over the post of note
-- 
+
+  
 - **Note Management:** Organize your notes using some description and add note titles for easy retrieval.
 
+
 - **Chat with Other Users:** Engage in **real-time conversations** with other users through the built-in chat feature. Discuss topics, exchange knowledge, and build connections.
+  
   ![chat page](https://github.com/ankitkr437/NoteSharing/blob/main/frontend/public/image/chat.png)
 
 
@@ -65,6 +70,10 @@ To run NoteShare locally, follow these steps:
    # Navigate to the backend directory
    cd ../backend
    npm install
+
+    # Navigate to the socket directory
+   cd ../socket
+   npm install
    ```
 
 3. Set up your MongoDB database and update the connection string in `backend/config.js`.
@@ -75,6 +84,9 @@ To run NoteShare locally, follow these steps:
    npm start
 
    # In the backend directory
+   npm start
+
+   # In the socket directory
    npm start
    ```
 
