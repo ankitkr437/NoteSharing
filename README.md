@@ -3,7 +3,7 @@
 
 NoteShare is a web application that allows users to share their notes with others and interact with fellow users through a built-in chat feature. With NoteShare, you can easily create, manage, and share your notes while **connecting with like-minded individuals**.
 
-![NoteShare Screenshot]! frontend/public/image/home.png
+![NoteShare Screenshot]! (frontend/public/image/home.png)
 
 ## Features
 
