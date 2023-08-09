@@ -107,6 +107,6 @@ NoteShare is licensed under the [**MIT License**](https://github.com/ankitkr437/
 
 ## Contact
 
-If you have any questions, feedback, or inquiries, please contact us at **ankitloharshi@gmail.com** or visit our [website](https://notesharing.onrender.com/).
+If you have any questions, feedback, or inquiries, please contact us at **ankitloharshi@gmail.com** or visit our [**website**](https://notesharing.onrender.com/).
 
 Happy Note Sharing! 📝
