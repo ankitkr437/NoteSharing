@@ -5,6 +5,7 @@ NoteShare is a web application that allows users to share their notes with other
 
 ![home page](https://github.com/ankitkr437/NoteSharing/blob/main/frontend/public/image/home.png)
 
+
 ## Features
 
 - **User Profiles:** Every user gets their own profile where they can view and manage their notes, as well as see their activity and engagement on the platform.
@@ -13,8 +14,6 @@ NoteShare is a web application that allows users to share their notes with other
 
 
 - **Note Sharing:** Share your notes with the community which will help others to get more on that topic.
-  
-  ![uploadNOte page](https://github.com/ankitkr437/NoteSharing/blob/main/frontend/public/image/uploadform.png)
 
   
 - **React on Notes:** React like if you like the notes also one can add the comment over the post of note
@@ -34,13 +33,19 @@ NoteShare is a web application that allows users to share their notes with other
 
 1. **Sign Up / Log In:** If you're a new user, create an account by providing your email and password. If you're an existing user, simply log in to your account.
 
-2. **Create a Note:** To share a note, go to your profile and click on "Create New Note." Write your note, add relevant tags, and choose whether to make it public or private.
+2. **Create a Note:** To share a note, int home page click on "Upload Note." Write your note, add relevant description, titles and your url of notes where you have uploaded the note
+   
+  ![UploadNots](https://github.com/ankitkr437/NoteSharing/blob/main/frontend/public/image/uploadform.png)
+  
 
-3. **Explore Shared Notes:**  find notes shared by other users. You can filter notes by tags, categories, or popularity.
+4. **Explore Shared Notes:**  find notes shared by other users. You can filter notes by tags, categories, or popularity on the searchBox by typing specific text.
 
-4. **Chat with Users:** To start a conversation, navigate to the user's profile and click on the "Chat" button. You can have one-on-one or group chats.
+5. **Chat with Users:** To start a conversation, click on the "Chat" button. search for particular user and click on that user now You can have one-on-one chats.
+   
+   ![UploadNots](https://github.com/ankitkr437/NoteSharing/blob/main/frontend/public/image/searchuser.png)
 
-5. **Manage Your Notes:** In your profile, you can view and manage all your notes. Edit, delete, or update.
+
+7. **Manage Your Notes:** In your profile, you can view and manage all your notes. Edit, delete, or update.
 
 
 ## Technologies Used
