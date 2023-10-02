@@ -82,20 +82,18 @@ To run NoteShare locally, follow these steps:
    ```
 
 3. Set up your MongoDB database and update the connection string in `backend/config.js`.
-
-4. Start the development servers for both the frontend and backend.
+4. Replace BASE_URL to LocalBASE_URL in frontend/src/requestMethods.js.
+5. For using the messenger, Replace EndPoint to your locally running socket url.
+6. Start the development servers for both the frontend and backend.
    ```bash
-   # In the frontend directory
-   npm start
-
    # In the backend directory
    npm start
-
    # In the socket directory
    npm start
+   # In the frontend directory
+   npm start
    ```
-
-5. Visit `http://localhost:3000` in your web browser to access NoteShare.
+7. Visit `http://localhost:3000` in your web browser to access NoteShare.
 
 ## Contribution
 
