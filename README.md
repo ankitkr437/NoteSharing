@@ -59,11 +59,11 @@ NoteShare is built using a combination of cutting-edge technologies:
 
 ## Installation
 
-To run NoteShare locally, follow these steps:
+To run NoteSharing locally, follow these steps:
 
 1. Clone this repository to your local machine.
    ```bash
-   git clone https://github.com/your-username/noteshare.git
+   git clone https://github.com/your-username/notesharing.git
    ```
 
 2. Install the dependencies for both the frontend and backend.
@@ -81,9 +81,9 @@ To run NoteShare locally, follow these steps:
    npm install
    ```
 
-3. Set up your MongoDB database and update the connection string in `backend/config.js`.
+3. Set up your MongoDB database and update the connection string in `backend/.env`.
 4. Replace BASE_URL to LocalBASE_URL in frontend/src/requestMethods.js.
-5. For using the messenger, Replace EndPoint to your locally running socket url.
+5. For using the messenger, Replace EndPoint to your locally running socket url in frontend/src/pages/messenger/messenger.jsx.
 6. Start the development servers for both the frontend and backend.
    ```bash
    # In the backend directory
