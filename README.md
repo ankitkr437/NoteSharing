@@ -69,7 +69,7 @@ To run NoteSharing locally, follow these steps:
 2. Install the dependencies for both the frontend and backend.
    ```bash
    # Navigate to the frontend directory
-   cd noteshare/frontend
+   cd NoteSharing/frontend
    npm install
 
    # Navigate to the backend directory
